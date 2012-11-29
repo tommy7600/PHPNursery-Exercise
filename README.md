@@ -41,10 +41,12 @@ Tabela roles niech przechowuje takie informacje : id, nazwa, opis
 - 1 | Administrator | Włada światem
 - 2 | Redaktor	    | Mistrz klawiatury
 - 3 | Użytkownik    | Zwykły szary człowiek
+
 Umożliw zarządzanie użytkownikami (ładną tabelkę i formularz w HTML, możesz użyć Bootstrapa) - dodawanie, usuwanie, edycja danych. Rolę dla użytkownika wybieramy z selecta. Pesel i email muszą zostać zwalidowane po stronie PHP. Dodaj także opcję wyszukiwania użytkownika (niech szuka po: imie, nazwisko, pesel, email).
 Do połączenia z bazą danych wykorzystaj PDO które rozszerzysz o dwie dodatkowe metody (PDO jest klasą po której można dziedziczyć):
 - public function insert('nazwa_tabeli, array $wartosci) // dodawanie nowego rektordu do tabeli
 - public function update('nazwa_tabeli, array $wartosci, $warunek_where) // aktualizowanie rektordu w tabeli
+
 Klasy postaraj się wykorzystać do operacji na elementach tabel z bazy. Przykładem może być:
 class User {} a w niej metody pobierz_uzytkownika_po_id($id), aktualizuj_dane()_uzytkownika, dodaj_noweg(...) 
 Utrzymaj jednolity styl pisania oraz nazewnictwa metod, klas i własności. Plikiem startowym dla Twojej aplikaji niech będzie "index.php". 
@@ -62,15 +64,20 @@ Twoim zadaniem będzie stworzenie od zera prostej strony internetowej, zawieraj�
  - Kontakt - formularz kontaktowy wysyłany na adres e-mail zawierający pola:
    - Input -> "Adres e-mail", "Podpis", "Temat wiadomości"
    - Textarea -> "Treść wiadomości"
+
 Zdefiniuj funkcję dla autoloadu klas, przechwytywania wyjątków, przekształcania adresu na odpowiedni kontroler. Oddziel kontroler oraz widok. W głównym pliku index.php zdefiniuj funkcjonalność odpowiedzialną za uruchamianie odpowiedniego kontrolera (Reflection API).
+
 Na pewno będziesz potrzebował następujących klas: Request, Response, View.
+
 Przykładowy układ plików:
+
 - class/
   - controller/
     - welcome.php
 	- contact.php
 	- gallery.php
 	- etc.
+	
   - http/
     - response.php
 	- request.php
