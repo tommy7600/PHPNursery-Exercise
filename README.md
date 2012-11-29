@@ -36,17 +36,71 @@ Pamiętaj aby dla każdej z tych funkcji była możliwość zaaokrąglenia wynik
 
 ## ZADANIE 5
 W bazie danych stwórz tabelę "users" oraz "roles".
-Tabela users niech przechowuje takie informacje : id, rola_id, imie, nazwisko, pesel, adres_zamieszkania, kod, pocztowy, telefon, emial, data_dodania 
+Tabela users niech przechowuje takie informacje : id, rola_id, imie, nazwisko, pesel, adres_zamieszkania, kod_pocztowy, telefon, emial, data_dodania 
 Tabela roles niech przechowuje takie informacje : id, nazwa, opis
-	np.   1 | Administrator | Włada światem
-		  2 | Redaktor	    | Mistrz klawiatury
-		  3 | Użytkownik    | Zwykły szary człowiek
+- 1 | Administrator | Włada światem
+- 2 | Redaktor	    | Mistrz klawiatury
+- 3 | Użytkownik    | Zwykły szary człowiek
+
 Umożliw zarządzanie użytkownikami (ładną tabelkę i formularz w HTML, możesz użyć Bootstrapa) - dodawanie, usuwanie, edycja danych. Rolę dla użytkownika wybieramy z selecta. Pesel i email muszą zostać zwalidowane po stronie PHP. Dodaj także opcję wyszukiwania użytkownika (niech szuka po: imie, nazwisko, pesel, email).
 Do połączenia z bazą danych wykorzystaj PDO które rozszerzysz o dwie dodatkowe metody (PDO jest klasą po której można dziedziczyć):
-	public function insert('nazwa_tabeli, array $wartosci) // dodawanie nowego rektordu do tabeli
-	public function update('nazwa_tabeli, array $wartosci, $warunek_where) // aktualizowanie rektordu w tabeli
+- public function insert('nazwa_tabeli, array $wartosci) // dodawanie nowego rektordu do tabeli
+- public function update('nazwa_tabeli, array $wartosci, $warunek_where) // aktualizowanie rektordu w tabeli
+
 Klasy postaraj się wykorzystać do operacji na elementach tabel z bazy. Przykładem może być:
 class User {} a w niej metody pobierz_uzytkownika_po_id($id), aktualizuj_dane()_uzytkownika, dodaj_noweg(...) 
 Utrzymaj jednolity styl pisania oraz nazewnictwa metod, klas i własności. Plikiem startowym dla Twojej aplikaji niech będzie "index.php". 
 Dane do połączenia z bazą przechowuj w pliku konfiguracyjnym "config.php"
 Jeżeli masz pomysł w jaki sposób wyddzielić HTML, zrób to ;-)
+
+## ZADANIE 6
+Twoim zadaniem będzie stworzenie od zera prostej strony internetowej, zawierającej:
+ - Stronę główną
+   - Slider z 3 banerami
+   - 3 boksy z tekstami pod sliderem
+ - O nas - zwykła podstrona informacyjna z tekstem
+ - Galeria - zdjęcia wyświetlane na podstawie plików graficznych znajdujących się w folderze
+ - Pliki - pliki wyświetlane na podstawie plików znajdujących się w folderze
+ - Kontakt - formularz kontaktowy wysyłany na adres e-mail zawierający pola:
+   - Input -> "Adres e-mail", "Podpis", "Temat wiadomości"
+   - Textarea -> "Treść wiadomości"
+
+Zdefiniuj funkcję dla autoloadu klas, przechwytywania wyjątków, przekształcania adresu na odpowiedni kontroler. Oddziel kontroler oraz widok. W głównym pliku index.php zdefiniuj funkcjonalność odpowiedzialną za uruchamianie odpowiedniego kontrolera (Reflection API).
+
+Na pewno będziesz potrzebował następujących klas: Request, Response, View.
+
+Przykładowy układ plików:
+```
+- class/
+  - controller/
+    - welcome.php
+	- contact.php
+	- gallery.php
+	- etc.
+  - http/
+    - response.php
+	- request.php
+- view/
+  - layout.php
+  - welcome.php
+  - contanct.php
+  - gallery.php
+  - etc.
+- upload/
+  - gallery/
+  - files/
+- res/
+  - css/
+    - style.css
+	- etc.
+  - js/
+    - jquery.js
+	- etc.
+  - img/
+    - banner-1.jpg
+	- banner-2.jpg
+	- banner-3.jpg
+	- etc.
+- index.php
+- .htaccess
+```
