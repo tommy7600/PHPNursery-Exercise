@@ -70,14 +70,13 @@ Zdefiniuj funkcję dla autoloadu klas, przechwytywania wyjątków, przekształca
 Na pewno będziesz potrzebował następujących klas: Request, Response, View.
 
 Przykładowy układ plików:
-
+```
 - class/
   - controller/
     - welcome.php
 	- contact.php
 	- gallery.php
 	- etc.
-	
   - http/
     - response.php
 	- request.php
@@ -104,3 +103,4 @@ Przykładowy układ plików:
 	- etc.
 - index.php
 - .htaccess
+```
