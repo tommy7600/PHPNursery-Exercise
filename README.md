@@ -36,7 +36,7 @@ Pamiętaj aby dla każdej z tych funkcji była możliwość zaaokrąglenia wynik
 
 ## ZADANIE 5
 W bazie danych stwórz tabelę "users" oraz "roles".
-Tabela users niech przechowuje takie informacje : id, rola_id, imie, nazwisko, pesel, adres_zamieszkania, kod, pocztowy, telefon, emial, data_dodania 
+Tabela users niech przechowuje takie informacje : id, rola_id, imie, nazwisko, pesel, adres_zamieszkania, kod_pocztowy, telefon, emial, data_dodania 
 Tabela roles niech przechowuje takie informacje : id, nazwa, opis
 - 1 | Administrator | Włada światem
 - 2 | Redaktor	    | Mistrz klawiatury
@@ -62,7 +62,7 @@ Twoim zadaniem będzie stworzenie od zera prostej strony internetowej, zawieraj�
  - Kontakt - formularz kontaktowy wysyłany na adres e-mail zawierający pola:
    - Input -> "Adres e-mail", "Podpis", "Temat wiadomości"
    - Textarea -> "Treść wiadomości"
-Zdefiniuj funkcję dla autoloadu klas, przechwytywania wyjątków, przekształcania adresu na odpowiedni kontroler. Oddziel kontroler oraz widok. W głównym pliku index.php zdefiniuj funkcjonalność odpowiedzialną za uruchamianie odpowiedniego kontrolera.
+Zdefiniuj funkcję dla autoloadu klas, przechwytywania wyjątków, przekształcania adresu na odpowiedni kontroler. Oddziel kontroler oraz widok. W głównym pliku index.php zdefiniuj funkcjonalność odpowiedzialną za uruchamianie odpowiedniego kontrolera (Reflection API).
 Na pewno będziesz potrzebował następujących klas: Request, Response, View.
 Przykładowy układ plików:
 - class/
