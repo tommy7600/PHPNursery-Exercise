@@ -12,17 +12,16 @@
  */
 class PdoExtension extends PDO
 {
-    public function __construct($dsn, $username, $passwd, $options, $db) {
-        parent::__construct($dsn, $username, $passwd, $options);
-        $this->select_db(Config::DATABASE);
+    public function __construct($dsn, $username, $passwd) {
+        parent::__construct($dsn, $username, $passwd);
     }
     
     public function Insert($table, array $values)
     {
-        $query = $this->prepare('INSERT INTO '.$table.'( '.implode( $values, ",").') VALUES (:'.implode($values, ",:").')');
+        $query = $this->prepare('INSERT INTO '.$table.'( '.implode( array_keys($values), ",").') VALUES (:'.implode(array_keys($values), ",:").')');
         foreach ($values as $key => $value) 
         {
-            $query->bindParam(':'.$key, $value);
+            $query->bindValue(':'.$key, $value);
         }
         
         $query->execute();
@@ -37,11 +36,11 @@ class PdoExtension extends PDO
         }
         $sets = substr_replace($sets ,"",-1);
         
-         $query = $this->prepare('UPDATE '.$table.' SET '.$sets.' WHERE '.$whereCondition);
+        $query = $this->prepare('UPDATE '.$table.' SET '.$sets.' WHERE '.$whereCondition);
          
         foreach ($values as $key => $value) 
         {
-            $query->bindParam(':'.$key, $value);
+            $query->bindValue(':'.$key, $value);
         }
         
         $query->execute();

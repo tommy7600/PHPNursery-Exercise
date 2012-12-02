@@ -11,8 +11,7 @@
  * @author tbula
  */
 class Config {
-    const HOST = 'localhost';
-    const DATABASE = 'users';
+    const HOST = 'mysql:dbname=users;host=localhost';
     const USER = 'forfit';
     const PASS = 'forfit';
 }
