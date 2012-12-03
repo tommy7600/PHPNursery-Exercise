@@ -10,7 +10,8 @@
  *
  * @author tbula
  */
-class User {
+class Class_User 
+{
     private $id;
     private $role;
     private $firstName;
@@ -39,7 +40,7 @@ class User {
         return $this->id;
     }
     
-    public function SetRole(Role $role)
+    public function SetRole(Class_Role $role)
     {
         $this->role = $role;
     }

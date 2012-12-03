@@ -10,15 +10,12 @@
  *
  * @author Kenny
  */
-include_once 'PdoExtension.php';
-include_once 'Config.php';
-include_once 'Role.php';
-
-class RoleCommon {
+class Common_Role 
+{
    
     public static function GetRoleById($id)
     {
-        $db = new PdoExtension(Config::HOST, Config::USER, Config::PASS);
+        $db = new Common_PdoExtension(Config_DB::HOST, Config_DB::USER, Config_DB::PASS);
         $query ='SELECT `id`, `name`, `description` FROM `roles` WHERE `id` = :id';
         $stmt = $db->prepare($query);
         $stmt->bindParam(':id', $id);
@@ -26,7 +23,7 @@ class RoleCommon {
         $row = $stmt->fetch();
         $db = null;
         
-        $role = new Role();
+        $role = new Class_Role();
         $role->SetId($row['id']);
         $role->SetDescription($row['description']);
         $role->SetName($row['name']);
@@ -38,7 +35,7 @@ class RoleCommon {
     {
         try
         {
-            $db = new PdoExtension(Config::HOST, Config::USER, Config::PASS);
+            $db = new Common_PdoExtension(Config_DB::HOST, Config_DB::USER, Config_DB::PASS);
 
             $query ='SELECT `id`, `name`, `description` FROM `roles`';
             $stmt = $db->prepare($query);
@@ -46,7 +43,7 @@ class RoleCommon {
             $roles = array();
             while($row = $stmt->fetch())
             {
-                $role = new Role();
+                $role = new Class_Role();
                 $role->SetId($row['id']);
                 $role->SetDescription($row['description']);
                 $role->SetName($row['name']);

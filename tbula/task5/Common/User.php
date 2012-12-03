@@ -10,38 +10,35 @@
  *
  * @author tbula
  */
-include_once 'PdoExtension.php';
-include_once 'Config.php';
-
-class UserCommon {
+class Common_User {
     
-    public static function SaveUser(User $user)
+    public static function SaveUser(Class_User $user)
     {
-        $db = new PdoExtension(Config::HOST, Config::USER, Config::PASS);
-        $db->Insert('users', UserCommon::ConvertUserToArray($user));
+        $db = new Common_PdoExtension(Config_DB::HOST, Config_DB::USER, Config_DB::PASS);
+        $db->Insert('users', Common_User::ConvertUserToArray($user));
         $db = null;
     }
     
-    public static function UpdateUser(User $user)
+    public static function UpdateUser(Class_User $user)
     {
-        $db = new PdoExtension(Config::HOST, Config::USER, Config::PASS);
-        $db->Update('users', UserCommon::ConverTuserToArray($user),'id = '. $user->GetId());
+        $db = new Common_PdoExtension(Config_DB::HOST, Config_DB::USER, Config_DB::PASS);
+        $db->Update('users', Common_User::ConverTuserToArray($user),'id = '. $user->GetId());
         $db = null;
     }
     
     public static function DeleteUser($id)
     {
-       $db = new PdoExtension(Config::HOST, Config::USER, Config::PASS);
+       $db = new Common_PdoExtension(Config_DB::HOST, Config_DB::USER, Config_DB::PASS);
        $query = 'DELETE FROM users WHERE `id`= :id';
        $stmt = $db->prepare($query);
-       $stmt->bindValue(':id', $id);
+       $stmt->bindParam(':id', $id);
        $stmt->execute();
        $db = null; 
     }
     
     public static function FindUser($firstName, $secondName, $pesel, $email)
     {
-        $dbo = new PdoExtension(Config::HOST, Config::USER, Config::PASS);
+        $dbo = new Common_PdoExtension(Config_DB::HOST, Config_DB::USER, Config_DB::PASS);
         $query = 'SELECT `id`, `roleId`, `firstName`, `secondName`, `pesel`, `address`, `postCode`, `phone`, `email`, `birthDate` FROM `users` 
             WHERE (`firstName` = :firstName OR :firstName = "")
             AND (`secondName` = :secondName OR :secondName = "")
@@ -58,7 +55,7 @@ class UserCommon {
         
         while ($row = $stmt->fetch())
         {
-            array_push($users, UserCommon::ConvertRowToUser($row));
+            array_push($users, Common_User::ConvertRowToUser($row));
         }
         
         $dbo = null;
@@ -67,7 +64,7 @@ class UserCommon {
     
     public static function GetUserById($id)
     {
-        $db = new PdoExtension(Config::HOST, Config::USER, Config::PASS);
+        $db = new Common_PdoExtension(Config_DB::HOST, Config_DB::USER, Config_DB::PASS);
         $query ='SELECT `id`, `roleId`, `firstName`, `secondName`, `pesel`, `address`, `postCode`, `phone`, `email`, `birthDate` FROM `users` WHERE `id` = :id';
         $stmt = $db->prepare($query);
         $stmt->bindParam(':id', $id);
@@ -75,12 +72,12 @@ class UserCommon {
         $row = $stmt->fetch();
         $db = null;
         
-        return UserCommon::ConvertRowToUser($row);
+        return Common_User::ConvertRowToUser($row);
     }
     
     private static  function ConvertRowToUser($row)
     {
-        $user = new User();
+        $user = new Class_User();
         $user->SetId($row['id']);
         $user->SetAddress($row['address']);
         $user->SetBirthDate($row['birthDate']);
@@ -90,12 +87,12 @@ class UserCommon {
         $user->SetPesel($row['pesel']);
         $user->SetPhone($row['phone']);
         $user->SetPostCode($row['postCode']);
-        $user->SetRole(RoleCommon::GetRoleById($row['roleId']));
+        $user->SetRole(Common_Role::GetRoleById($row['roleId']));
         
         return $user;
     }
 
-    private static function ConvertUserToArray(User $user)
+    private static function ConvertUserToArray(Class_User $user)
     {
         $array = array();
         

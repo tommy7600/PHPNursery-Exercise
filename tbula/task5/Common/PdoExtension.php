@@ -10,7 +10,8 @@
  *
  * @author tbula
  */
-class PdoExtension extends PDO
+
+class Common_PdoExtension extends PDO
 {
     public function __construct($dsn, $username, $passwd) {
         parent::__construct($dsn, $username, $passwd);

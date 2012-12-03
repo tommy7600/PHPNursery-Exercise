@@ -7,14 +7,6 @@
         <link href="/css/forms.css" rel="stylesheet" media="screen">
     </head>
     <body>
-        <?php
-            include_once 'Config.php';
-            include_once 'PdoExtension.php';
-            include_once 'Role.php';
-            include_once 'RoleCommon.php';
-            include_once 'User.php';
-            include_once 'UserCommon.php';
-       ?>
         <div class="container">       
             <div class="span10">
                 <div class="span5 well">
@@ -33,7 +25,7 @@
                        </div>
                        <div class="span3 offset1">
                            <input type="submit" value="Search" class="btn btn-success">
-                           <a href="AddUser.php" class="btn btn-success">Add user</a>
+                           <a href="View/AddUser.php" class="btn btn-success">Add user</a>
                        </div>
                    </form>
                 </div>
@@ -51,7 +43,7 @@
                         <th>Action</th>
                     </tr>
                     <?php
-                    
+                        include_once 'AutoLoad.php';
                         if(isset($_POST['firstName']))
                         {
                             $firstName = $_POST['firstName'];
@@ -85,7 +77,7 @@
                             $email='';
                         }
                         
-                        $users = UserCommon::FindUser($firstName, $secondName, $pesel, $email);
+                        $users = Common_User::FindUser($firstName, $secondName, $pesel, $email);
                         foreach ($users as $user) 
                         {
                             echo '<tr>';
@@ -99,8 +91,8 @@
                             echo '<td>'.$user->GetBirthDate().'</td>';
                             echo '<td>'.$user->GetRole()->GetName().'</td>';
                             echo '<td>
-                                <a href="DeleteUser.php?id='.$user->GetId().'"><i class="icon-remove"></i></a>
-                                <a href="AddUser.php?id='.$user->GetId().'"><i class="icon-pencil"></i></a>
+                                <a href="Controller/DeleteUser.php?id='.$user->GetId().'"><i class="icon-remove"></i></a>
+                                <a href="View/AddUser.php?id='.$user->GetId().'"><i class="icon-pencil"></i></a>
                                 </td>';
                             echo '</tr>';
                         }

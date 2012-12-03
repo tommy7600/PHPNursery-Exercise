@@ -15,21 +15,16 @@ and open the template in the editor.
         <div class="container">
             <div class="span5 offset3 well">
                 <?php
-                    include_once 'Config.php';
-                    include_once 'PdoExtension.php';
-                    include_once 'Role.php';
-                    include_once 'RoleCommon.php';
-                    include_once 'User.php';
-                    include_once 'UserCommon.php';
+                    include_once '../AutoLoad.php';
                     if(isset($_GET['id']))
                     {
-                        $user = UserCommon::GetUserById($_GET['id']);
-                        echo '<form action="Controller_AddUser.php?id='.$user->GetId().'" name="input" method="post">';
+                        $user = Common_User::GetUserById($_GET['id']);
+                        echo '<form action="../Controller/AddUser.php?id='.$user->GetId().'" name="input" method="post">';
                     }
                     else
                     {
-                        $user = new User();
-                        echo '<form action="Controller_AddUser.php" name="input" method="post">';
+                        $user = new Class_User();
+                        echo '<form action="../Controller/AddUser.php" name="input" method="post">';
                     }
                 ?>
                     <div class="span2 span-left">
@@ -54,7 +49,7 @@ and open the template in the editor.
                             echo  '<input type="email" name="email" value="'.$user->GetEmail().'">';
                             echo  '<input type="date" name="birthDate" value="'.$user->GetBirthDate().'">';  
                            
-                            $roles = RoleCommon::GetRoles();
+                            $roles = Common_Role::GetRoles();
                             echo '<select name="roleId">';
                             foreach ($roles as $role) 
                             {
@@ -83,7 +78,7 @@ and open the template in the editor.
                             echo  '<input type="submit" value="Add user" class="btn btn-success">';
                         }
                         ?>
-                        <a href="index.php" class="btn btn-danger">Cancel</a>
+                        <a href="../index.php" class="btn btn-danger">Cancel</a>
                     </div>
                 </form>
             </div>

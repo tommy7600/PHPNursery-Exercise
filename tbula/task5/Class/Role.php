@@ -10,7 +10,8 @@
  *
  * @author tbula
  */
-class Role {
+class Class_Role 
+{
     private $id;
     private $name;
     private $description;

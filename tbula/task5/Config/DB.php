@@ -10,7 +10,7 @@
  *
  * @author tbula
  */
-class Config {
+class Config_DB {
     const HOST = 'mysql:dbname=users;host=localhost';
     const USER = 'forfit';
     const PASS = 'forfit';

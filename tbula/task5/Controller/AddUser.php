@@ -1,9 +1,6 @@
 <?php
-
-    include_once 'User.php';
-    include_once 'RoleCommon.php';
-    include_once 'UserCommon.php';
-
+    include_once '../AutoLoad.php';
+    
     if(isset($_GET['id']))
     {
         EditUser();
@@ -17,7 +14,7 @@
     {
         try
         {
-            UserCommon::UpdateUser(SetUserData());
+            Common_User::UpdateUser(SetUserData());
             header('Location:index.php');
         }
         catch (PDOException $ex)
@@ -34,8 +31,8 @@
     {
         try
         {
-            UserCommon::SaveUser(SetUserData());
-            header('Location:index.php');
+            Common_User::SaveUser(SetUserData());
+            header('Location:../index.php');
         }
         catch (PDOException $ex)
         {
@@ -49,7 +46,8 @@
     
     function SetUserData()
     {
-        $user = new User();
+        $user = new Class_User();
+        
         $user->SetAddress($_POST['address']);
         $user->SetBirthDate($_POST['birthDate']);
         $user->SetEmail($_POST['email']);
@@ -58,7 +56,7 @@
         $user->SetPhone($_POST['phone']);
         $user->SetPostCode($_POST['postCode']);
         $user->SetSecondName($_POST['secondName']);
-        $user->SetRole(RoleCommon::GetRoleById($_POST['roleId']));
+        $user->SetRole(Common_Role::GetRoleById($_POST['roleId']));
         
         return $user;
     }
