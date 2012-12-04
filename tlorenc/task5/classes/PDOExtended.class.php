@@ -6,7 +6,7 @@ class PDOExtended extends PDO
     private $sql;
     private $bind;
 
-    public function __construct($dsn, $user = "", $passwd = "")
+    public function __construct($dsn, $user = "", $password = "")
     {
         $options = array(
             PDO::ATTR_PERSISTENT => true,
@@ -14,7 +14,7 @@ class PDOExtended extends PDO
         );
 
         try {
-            parent::__construct($dsn, $user, $passwd, $options);
+            parent::__construct($dsn, $user, $password, $options);
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
         }

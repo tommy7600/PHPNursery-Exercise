@@ -17,10 +17,10 @@ $content = '<form id="addForm" class="form-horizontal" method="post" action="ind
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="inputPesel">Pesel</label>
+        <label class="control-label" for="inputPesel">PESEL</label>
 
         <div class="controls">
-            <input type="text" name="u_pesel" id="inputPesel" required pattern="[^d]{11}" placeholder="Pesel" title="Please input valid pesel number" x-moz-errormessage="Please input valid pesel number">
+            <input type="text" name="u_pesel" id="inputPesel" required pattern="[0-9]{11}" placeholder="Pesel" title="Please input valid pesel number" x-moz-errormessage="Please input valid pesel number">
         </div>
     </div>
 
@@ -28,7 +28,7 @@ $content = '<form id="addForm" class="form-horizontal" method="post" action="ind
         <label class="control-label" for="inputPhone">Phone</label>
 
         <div class="controls">
-            <input type="text" name="u_phone" id="inputPhone" required pattern="[^d]{1,}" placeholder="Phone number" title="Please input user phone number" x-moz-errormessage="Please input user phone number">
+            <input type="text" name="u_phone" id="inputPhone" required pattern="[0-9]{1,}" placeholder="Phone number" title="Please input user phone number" x-moz-errormessage="Please input user phone number">
         </div>
     </div>
 
@@ -52,7 +52,7 @@ $content = '<form id="addForm" class="form-horizontal" method="post" action="ind
         <label class="control-label" for="inputPostCode">Postal Code</label>
 
         <div class="controls">
-            <input type="text" name="u_post_code" id="inputPostCode" required pattern="[^d]{2}-[^d]{3}" placeholder="Post code" title="Please input postal code in format xx-xxx" x-moz-errormessage="Please input postal code in format xx-xxx">
+            <input type="text" name="u_post_code" id="inputPostCode" required pattern="[0-9]{2}-[0-9]{3}" placeholder="Post code" title="Please input postal code in format xx-xxx" x-moz-errormessage="Please input postal code in format xx-xxx">
         </div>
     </div>
 
