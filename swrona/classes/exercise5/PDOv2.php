@@ -9,7 +9,20 @@ class PDOv2 extends PDO
         $this->exec("SET CHARACTER SET utf8");
     }
     
+    public function insert($table, array $params)
+    {
+        return $this->exec("INSERT INTO " . $table . "(" . implode(",",array_keys($params)) . ") VALUES ('" . implode("','",array_values($params)) . "')");
+    }
 
+    public function update($table, array $params, $where)
+    {
+        foreach($params As $id => $param) {
+            $assignments[$id] = $id . "='" . $param . "'";
+        }
+        
+        return $this->exec("UPDATE " . $table . " SET " . implode(",",array_values($assignments)) . " WHERE " . $where);
+    }
+    
 }
 
 ?>

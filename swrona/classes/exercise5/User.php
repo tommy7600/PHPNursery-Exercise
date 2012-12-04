@@ -25,11 +25,16 @@ class User
         return $this->_params;
     }
 
-    public static function getUsers()
+    public static function getUsers($where)
     {
         $dbh = new PDOv2();
+        $result = array();
         
-        $stmt = $dbh->prepare("SELECT * FROM users ORDER BY id");
+        if (is_null($where))
+            $stmt = $dbh->prepare("SELECT * FROM users ORDER BY id");
+        else
+            $stmt = $dbh->prepare("SELECT * FROM users WHERE name='" . $where . "' or surname='" . $where . "' or email='" . $where . "' or pesel='" . $where . "'");
+            
         if ($stmt->execute()) {
             while ($row = $stmt->fetch()) {
                 $result[$row['id']] = new User($row);
@@ -45,21 +50,17 @@ class User
     {
         $dbh = new PDOv2();
         
-        $stmt = $dbh->prepare("INSERT INTO users (role_id,name,surname,pesel,address,zipcode,email,mobile,reg_date) VALUES (
-            '" . $params['role_id'] . "',
-            '" . $params['name'] . "',
-            '" . $params['surname'] . "',
-            '" . $params['pesel'] . "',
-            '" . $params['address'] . "',
-            '" . $params['zipcode'] . "',
-            '" . $params['email'] . "',
-            '" . $params['mobile'] . "',
-            '" . date('Y-m-d', time()) . "'
-            )");
+        $p['role_id'] = $params['role_id'];
+        $p['name'] = $params['name'];
+        $p['surname'] = $params['surname'];
+        $p['pesel'] = $params['pesel'];
+        $p['address'] = $params['address'];
+        $p['zipcode'] = $params['zipcode'];
+        $p['email'] = $params['email'];
+        $p['mobile'] = $params['mobile'];
+        $p['reg_date'] = date('Y-m-d', time());
         
-        $dbh = null;
-        
-        return $stmt->execute($params);
+        return $dbh->insert('users', $p);
     }
 
     public static function deleteUserById($id)
@@ -78,20 +79,16 @@ class User
     {
         $dbh = new PDOv2();
         
-        $stmt = $dbh->prepare("UPDATE users SET
-            role_id='" . $params['role_id'] . "',
-            name='" . $params['name'] . "',
-            surname='" . $params['surname'] . "',
-            pesel='" . $params['pesel'] . "',
-            address='" . $params['address'] . "',
-            zipcode='" . $params['zipcode'] . "',
-            email='" . $params['email'] . "',
-            mobile='" . $params['mobile'] . "'
-            WHERE id = '" . $params['id'] . "'");
+        $p['role_id'] = $params['role_id'];
+        $p['name'] = $params['name'];
+        $p['surname'] = $params['surname'];
+        $p['pesel'] = $params['pesel'];
+        $p['address'] = $params['address'];
+        $p['zipcode'] = $params['zipcode'];
+        $p['email'] = $params['email'];
+        $p['mobile'] = $params['mobile'];
         
-        $dbh = null;
-        
-        return $stmt->execute();
+        return $dbh->update('users', $p, "id = '" . $params['id'] . "'");
     }
     
 }

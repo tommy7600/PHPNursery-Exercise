@@ -9,14 +9,18 @@
     $e5c = new Exercise5controller();
 
     // Check if operation requested.
-    var_dump($_POST); 
     if ((!empty($_POST)) && (isset($_POST['op']))) {
         if ($_POST['op'] == 'add') User::addUser($_POST);
         if ($_POST['op'] == 'delete') User::deleteUserById($_POST['id']);
         if ($_POST['op'] == 'edit') User::editUser($_POST);
         header('location:index.php?page=exercise5');
     }
-
+    //var_dump($_POST);
+    echo '<form class="form-search" action="index.php?page=exercise5" method="post" name="searchForm" style="float:right;">
+    <input type="text" name="searchText" class="input-medium search-query">
+    <button type="submit" class="btn">Search</button>
+    </form>';
+    
     // Table header row.
     echo '<table class="table table-striped"><tr>';
     foreach($e5c->userHeaders As $id => $header)
@@ -24,7 +28,7 @@
     echo '</tr>';
 
     // User rows.
-    foreach(User::getUsers() As $id => $user) {
+    foreach(User::getUsers((isset($_POST['searchText']) && !empty($_POST['searchText'])) ? $_POST['searchText'] : null) As $id => $user) {
         echo '<tr>';
         $userParams = $user->getAllParams();
         foreach($e5c->userParams As $id => $param) {
@@ -77,7 +81,7 @@
 </div>
 
 <pre class="prettyprint">
-    Too much code, div has overblown.
+    Too much code, div has overblown (booom).
 </pre>
 
 <script>
