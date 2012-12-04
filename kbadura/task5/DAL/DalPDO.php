@@ -10,12 +10,12 @@ class DalPDO extends PDO
 
     public  function __construct()
     {
-           $this->db = new PDO('mysql:host=localhost;dbname=task5', 'root', '');
+           $this->db = new PDO(config::ConnectionString, config::User, config::Password);
     }
 
-    public function select($table, array $vars)
+    public function select($table, array $vals)
     {
-        $statment = $this->db->prepare('Select '.implode(', ', array_values($vars)).' From '.$table);
+        $statment = $this->db->prepare('Select '.implode(', ', array_values($vals)).' From '.$table);
         $statment->execute();
 
         $result = array();
@@ -25,6 +25,16 @@ class DalPDO extends PDO
         }
         $statment = null;
         return $result;
+    }
+
+    public function update($table, array $vals, $id)
+    {
+        $statment = $this->db->prepare("UPDATE ".$table." SET '".implode("'=? '", array_keys($vals))."'=? WHERE 'id'=".$id);
+
+        for($i = 1; $i <= count($vals); $i++)
+        {
+            $statment->bindValue($i, $vals);
+        }
     }
 
     public function insert($table, array $vals)
