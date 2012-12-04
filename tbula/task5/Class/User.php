@@ -10,7 +10,8 @@
  *
  * @author tbula
  */
-class User {
+class Class_User 
+{
     private $id;
     private $role;
     private $firstName;
@@ -26,7 +27,7 @@ class User {
     {
         if(is_numeric($id))
         {
-            $his->id = $id;
+            $this->id = $id;
         }
         else
         {
@@ -39,7 +40,7 @@ class User {
         return $this->id;
     }
     
-    public function SetRole(Role $role)
+    public function SetRole(Class_Role $role)
     {
         $this->role = $role;
     }
@@ -119,7 +120,7 @@ class User {
     
     public function SetPostCode($postCode)
     {
-        if(preg_match('/[0-9]/{2}-/[0-9]{3}', $postCode))
+        if(preg_match("/([0-9]{2})-([0-9]{3})/", $postCode))
         {
             $this->postCode = $postCode;
         }
@@ -153,17 +154,6 @@ class User {
     
     public function SetBirthDate($birthDate)
     {
-        if (preg_match("/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/", $birthDate, $matches)) 
-        {
-            if (!checkdate($matches[2], $matches[1], $matches[3])) 
-            {
-                throw new Exception('Birth date is not valid');
-            }
-        } 
-        else 
-        {
-             throw new Exception('Birth date is not valid');
-        }
         $this->birthDate = $birthDate;
     }
     

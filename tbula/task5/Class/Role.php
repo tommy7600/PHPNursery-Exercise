@@ -10,10 +10,11 @@
  *
  * @author tbula
  */
-class Role {
+class Class_Role 
+{
     private $id;
     private $name;
-    private $desc;
+    private $description;
     
     public function SetName($name)
     {
@@ -25,14 +26,14 @@ class Role {
         return $this->name;
     }
     
-    public function SetDesc($desc)
+    public function SetDescription($description)
     {
-        $this->desc = $desc;
+        $this->description = $description;
     }
     
-    public function GetDesc()
+    public function GetDescrition()
     {
-        return $this->desc;
+        return $this->description;
     }
     
     public function SetId($id)
