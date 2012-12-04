@@ -77,7 +77,7 @@ class User
         return $this->role_id;
     }
 
-    function __construct($id, $role_id, $pesel, $name, $lastName, $address, $postCode, $email, $phone, $creatDate)
+    public function __construct($id, $role_id, $pesel, $name, $lastName, $address, $postCode, $email, $phone, $creatDate)
     {
         $this->address = $address;
         $this->creatDate = $creatDate;
@@ -89,5 +89,27 @@ class User
         $this->phone = $phone;
         $this->postCode = $postCode;
         $this->role_id = $role_id;
+    }
+
+    public function selectAll()
+    {
+        $columns = User::getAllColumnName();
+
+        $db = new DalPDO();
+
+        $users = array();
+
+        $result = $db->selectAll("user", $columns);
+        foreach($result as $key => $val)
+        {
+            $users[] = new User($val[0], $val[1], $val[2], $val[3], $val[4], $val[5], $val[6], $val[7], $val[8], $val[9]);
+        }
+
+        return $users;
+    }
+
+    public static function getAllColumnName()
+    {
+        return array("id", "role_id", "pesel", "name", "lastname", "address", "postcode", "email", "phone", "creat_date");
     }
 }
