@@ -1,10 +1,19 @@
 .form-label 
 { 
-    padding-top: 10px;
+    padding-top: 8px;
 }
 
 .span-left
 {
     margin: 0px;
+}
+
+#emailText
+{
+    width: 560px;
+    height: 100px;
+    max-width: 560px;
+    max-height: 100px;
+    resize: none;
 }
 
