@@ -18,3 +18,8 @@ header .span6 .nav.nav-pills.pull-right {
     text-align: center;
     width: 90%;
 }
+
+.alert, .alert-error
+{
+    margin-top: 15px;
+}
