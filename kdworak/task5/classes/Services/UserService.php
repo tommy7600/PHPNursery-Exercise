@@ -1,7 +1,7 @@
 <?php
     class UserService 
     {
-        
+        // fields.
         private $customPDO;
         
         // constructor.

@@ -2,7 +2,7 @@
 
     class UserWrapper
     {
-        // fields
+        // fields.
         private $user_Id;
         private $user_Role;
         private $user_FirstName;

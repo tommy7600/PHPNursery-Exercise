@@ -1,7 +1,7 @@
 <?php
     class RoleService 
     {
-        // get all roles.
+        // get all available roles.
         public function SelectAll(){
             $instance = new CustomPDO();
             $items = $instance->SelectAll('roles');
@@ -15,5 +15,4 @@
             
             return $wrappers;
         }
-        
     }

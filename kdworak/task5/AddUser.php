@@ -4,19 +4,18 @@
     $userService = new \UserService();
     
     if(isSet($_GET['editUser'])
-                    && !empty($_GET['editUser']))
-            {
-                $dbUser = $userService->SelectUserById($_GET['editUser']);
-
-                    $_POST['Role'] = $dbUser->user_Role;
-                    $_POST['FirstName'] = $dbUser->user_FirstName;
-                    $_POST['LastName'] = $dbUser->user_LastName;
-                    $_POST['Pesel'] = $dbUser->user_Pesel;
-                    $_POST['Address'] = $dbUser->user_Address;
-                    $_POST['PostalCode'] = $dbUser->user_PostalCode;
-                    $_POST['Phone'] = $dbUser->user_Phone;
-                    $_POST['Email'] = $dbUser->user_Email;
-            }
+            && !empty($_GET['editUser']))
+    {
+        $dbUser = $userService->SelectUserById($_GET['editUser']);
+        $_POST['Role'] = $dbUser->user_Role;
+        $_POST['FirstName'] = $dbUser->user_FirstName;
+        $_POST['LastName'] = $dbUser->user_LastName;
+        $_POST['Pesel'] = $dbUser->user_Pesel;
+        $_POST['Address'] = $dbUser->user_Address;
+        $_POST['PostalCode'] = $dbUser->user_PostalCode;
+        $_POST['Phone'] = $dbUser->user_Phone;
+        $_POST['Email'] = $dbUser->user_Email;
+    }
             
     if(isSet($_POST['FirstName'] 
             , $_POST['LastName']
@@ -34,20 +33,34 @@
             && !empty($_POST['Address'])
             && !empty($_POST['PostalCode'])
             && !empty($_POST['Phone'])
-            && !empty($_POST['Email'])
-             
-            )
+            && !empty($_POST['Email']))
     {
         
         // validateEmail
         if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL))
         {
-            echo 'wrong email!';
+        ?>
+
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <h4>Warning!</h4>
+                This email is incorrect!
+            </div>
+
+        <?php
         }
         else if(!filter_var ($_POST['Pesel'], FILTER_VALIDATE_REGEXP,
                 array('options' => array('regexp' => '/^[0-9]{11}$/'))))
         {
-           echo 'wrong pesel';
+        ?>
+
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <h4>Warning!</h4>
+                This pesel is incorrect!
+            </div>
+
+        <?php
         }
         else 
         {
@@ -63,7 +76,6 @@
                         'User_Email' => $_POST['Email'],
                         'User_CreatedDate' => new DateTime('now')
                     );
-
                 
                 if(isSet($_POST['UpdateMode'])
                         && $_POST['UpdateMode'] > -1)
@@ -77,8 +89,7 @@
                     $user = new UserWrapper($params);
                     $userService->AddUser($user);
                     header('location:index.php');
-                }
-                
+                }  
             }
     }
 ?>
@@ -86,6 +97,13 @@
 <html doctype>
     <head>
         <title>Add User</title>
+        <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+        
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/core.js"></script>
     </head>
     <body>
         <?php
@@ -139,9 +157,7 @@
                 <br>
                 
                 <input type="hidden" name="UpdateMode" value="<?php echo (isSet($_GET['editUser'])) ? $_GET['editUser'] : '-1'; ?>">
-                
                 <button type="submit">Save</button>
-                
             </fieldset>
         </form>
     </body>

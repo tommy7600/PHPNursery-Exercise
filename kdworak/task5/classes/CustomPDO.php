@@ -11,13 +11,12 @@
         }
         
         // Inserting a row into table.
-        public function insert($tableName, array $params)
+        public function Insert($tableName, array $params)
         {
-            $this->_connectToDataBase();  
+            $this->connectToDataBase();  
             $this->prepareParams($params, $columns, $values);
             $insertString = 'INSERT INTO ' . $tableName . ' (' . $columns . ') VALUES (' . $values . ');';
             $stmt = $this->dbh->prepare($insertString);
-            
             try 
             {
                 $stmt->execute();
@@ -31,9 +30,9 @@
         }
         
         // Updating a row in the table.
-        public function update($tableName, array $params, $recordId)
+        public function Update($tableName, array $params, $recordId)
         {
-            $this->_connectToDataBase();
+            $this->connectToDataBase();
             $this->prepareParams($params, $columns, $values);
             $columns = explode(',', $columns);
             $values = explode(',', $values);
@@ -60,7 +59,7 @@
         // Removing a row from the table.
         public function Remove($tableName, $condition)
         {
-            $this->_connectToDataBase();
+            $this->connectToDataBase();
             $removeString = 'DELETE FROM ' . $tableName . ' ' . $condition;
             $stmt = $this->dbh->prepare($removeString);
             try
@@ -71,23 +70,21 @@
             {
                 echo 'Error: ' . $e . '!';
             }
+            
             $this->dbh = null;
         }
         
         // Select all record from selected table.
         public function SelectAll($tableName)
         {
-            $this->_connectToDataBase();
+            $this->connectToDataBase();
+            $rows = array();
             $stmt = $this->dbh->prepare("SELECT * FROM " . $tableName);
             try 
             {
-                if($stmt->execute())
-                {
-                    while($row = $stmt->fetch())
-                    {
-                        $rows[] = $row;
-                    }
-                };
+                $stmt->execute();
+                $rows = $stmt->fetchAll();
+
             }
             catch(PDOException $e)
             {
@@ -100,20 +97,13 @@
         
         public function SelectAllBySearch($tableName, $condition)
         {
-            $this->_connectToDataBase();
+            $this->connectToDataBase();
             $rows = array();
             $stmt = $this->dbh->prepare("SELECT * FROM " . $tableName . ' ' . $condition);
             try 
             {
-                if($stmt->execute())
-                {
-                    while($row = $stmt->fetch())
-                    {
-                        //print_r($row);
-                        //echo "<br><br><br><br>";
-                        $rows[] = $row;
-                    }
-                };
+                $stmt->execute();
+                $rows = $stmt->fetchAll();
             }
             catch(PDOException $e)
             {
@@ -126,7 +116,7 @@
         
         public function SelectSingleRow($tableName, $condition)
         {
-            $this->_connectToDataBase();
+            $this->connectToDataBase();
             $stmt = $this->dbh->prepare("SELECT * FROM " . $tableName . ' ' . $condition);
             try
             {
@@ -158,7 +148,7 @@
         }
         
         // connecting to the database.
-        public function _connectToDataBase()
+        public function connectToDataBase()
         {
             try 
             {
