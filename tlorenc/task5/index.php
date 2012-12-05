@@ -50,9 +50,16 @@ if (isset($_GET['action'])) {
                     $resource = PageManager::Search($db, $_POST['param'], $_POST['keyword']);
                     include("content/main.php");
                 } else {
-                    $resource = PageManager::GetAllUsers($db);
+                    $resource = PageManager::GetMainData($db);
                     include("content/main.php");
                 }
+
+                break;
+
+            default:
+
+                $resource = PageManager::GetMainData($db);
+                include("content/main.php");
 
                 break;
         }
@@ -60,11 +67,11 @@ if (isset($_GET['action'])) {
         include ("content/error.php");
     }
 } else {
-    $resource = PageManager::GetAllUsers($db);
+    $resource = PageManager::GetMainData($db);
     include("content/main.php");
 }
 
-$template = new Template('User Managment', 'template/html/main.html');
+$template = new Template('User Management', 'template/html/main.html');
 $template->setContent('{MAIN_CONTENT}', $content);
 $template->display();
 

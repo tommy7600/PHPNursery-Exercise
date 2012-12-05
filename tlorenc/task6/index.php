@@ -1,3 +1,3 @@
 <?php
-echo "Hallo, World";
+echo 'Hallo, I will be custom MVC site :)';
 ?>

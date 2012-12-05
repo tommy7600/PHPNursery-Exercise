@@ -27,8 +27,8 @@ class User
 
     public function SetPostCode($postCode)
     {
-        if(!Validators::CheckPostCode($postCode))
-            throw new Exception('You have entered bad postal code');
+        if (!Validators::CheckPostCode($postCode))
+            throw new Exception('You have entered postal code in wrong format. It should be xx-xxx, eg. 40-600.');
 
         $this->postCode = $postCode;
     }
@@ -100,29 +100,29 @@ class User
 
     public function SetEmail($email)
     {
-        if(!Validators::CheckEmail($email))
-            throw new Exception('You have entered bad email address');
+        if (!Validators::CheckEmail($email))
+            throw new Exception('You have entered wrong email address.');
         $this->email = $email;
     }
 
     public function SetName($name)
     {
-        if(!Validators::CheckString($name))
-            throw new Exception('You have entered bad user name');
+        if (!Validators::CheckString($name))
+            throw new Exception('You have entered user name in wrong format. Please use letters.');
         $this->name = $name;
     }
 
     public function SetPesel($pesel)
     {
-        if(!Validators::CheckPesel($pesel))
-            throw new Exception('You have entered bad pesel number');
+        if (!Validators::CheckPesel($pesel))
+            throw new Exception('You have entered wrong PESEL number.');
         $this->pesel = $pesel;
     }
 
     public function SetPhone($phone)
     {
-        if(!Validators::CheckPhoneNumber($phone))
-            throw new Exception('You have entered bad phone number');
+        if (!Validators::CheckPhoneNumber($phone))
+            throw new Exception('You have entered phone number in wrong format. Please use only numbers.');
         $this->phone = $phone;
     }
 
@@ -133,12 +133,12 @@ class User
 
     public function SetSurname($surname)
     {
-        if(!Validators::CheckString($surname))
-            throw new Exception('You have entered bad surname');
+        if (!Validators::CheckString($surname))
+            throw new Exception('You have entered user surname in wrong format. Please use letters.');
         $this->surname = $surname;
     }
 
-    public function AddUser($name,$surname,$address,$email,$phone,$pesel,$role,$postCode)
+    public function AddUser($name, $surname, $address, $email, $phone, $pesel, $role, $postCode)
     {
         $this->SetName($name);
         $this->SetSurname($surname);
@@ -167,14 +167,14 @@ class User
 
     public function DeleteUserById($id)
     {
-		$this->id = $id;
+        $this->id = $id;
         $bind = array(
             ":id" => $this->id
         );
-		$this->db->Delete("users","u_id= :id",$bind);
+        $this->db->Delete("users", "u_id= :id", $bind);
     }
 
-    public function UpdateUser($id,$name,$surname,$address,$email,$phone,$pesel,$role,$postCode)
+    public function UpdateUser($id, $name, $surname, $address, $email, $phone, $pesel, $role, $postCode)
     {
         $this->id = $id;
         $this->SetName($name);
@@ -203,12 +203,12 @@ class User
             "u_email" => $this->GetEmail()
         );
 
-		$this->db->Update('users', $update, "u_id= :id", $bind);
+        $this->db->Update('users', $update, "u_id= :id", $bind);
     }
 
     public function GetUserDataById($id)
     {
-		$this->id = $id;
+        $this->id = $id;
         $bind = array(
             ":id" => $this->id
         );
@@ -216,15 +216,15 @@ class User
         $result = $this->db->Select("users", "u_id= :id", $bind);
 
         foreach ($result As $key => $value) {
-            $this->SetName($value["u_name"]);
-            $this->SetAddDate($value["u_add_date"]);
-            $this->SetAddress($value["u_address"]);
-            $this->SetEmail($value["u_email"]);
-            $this->SetPesel($value["u_pesel"]);
-            $this->SetPhone($value["u_phone"]);
-            $this->SetRole($value["u_role_id"]);
-            $this->SetSurname($value["u_surname"]);
-            $this->SetPostCode($value["u_post_code"]);
+            $this->name = $value["u_name"];
+            $this->addDate = $value["u_add_date"];
+            $this->address = $value["u_address"];
+            $this->email = $value["u_email"];
+            $this->pesel = $value["u_pesel"];
+            $this->phone = $value["u_phone"];
+            $this->role = $value["u_role_id"];
+            $this->surname = $value["u_surname"];
+            $this->postCode = $value["u_post_code"];
         }
     }
 }

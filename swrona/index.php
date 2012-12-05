@@ -35,6 +35,7 @@
                   <li id="exercise2"><a href="index.php?page=exercise2">Exercise two</a></li>
                   <li id="exercise3"><a href="index.php?page=exercise3">Exercise three</a></li>
                   <li id="exercise4"><a href="index.php?page=exercise4">Exercise four</a></li>
+                  <li id="exercise5"><a href="index.php?page=exercise5">Exercise five</a></li>
                 </ul>
               </li>
               <li><a href="#">About</a></li>
@@ -73,6 +74,10 @@
                     break;
                 case 'exercise4':
                     include 'exercise4.php';
+                    $page = $page . ', #exercises';
+                    break;
+                case 'exercise5':
+                    include 'exercise5.php';
                     $page = $page . ', #exercises';
                     break;
                 default:
