@@ -4,16 +4,19 @@
  * Date: 02.12.12
  * Time: 15:51
  */
+
+include("configDAL.php");
 class DalPDO extends PDO
 {
     public  function __construct()
     {
-           parent::__construct(config::ConnectionString, config::User, config::Password);
+           parent::__construct(configDAL::ConnectionString, configDAL::User, configDAL::Password);
     }
 
     public function selectAll($table, array $columns)
     {
-        $statment = $this->prepare('Select '.implode(', ', array_values($columns)).' From '.$table);
+        $query = 'Select '.implode(', ', array_values($columns)).' From '.$table;
+        $statment = $this->prepare($query);
         $statment->execute();
 
         return $statment->fetchAll();
