@@ -1,9 +1,10 @@
 <?php
     include_once 'AutoLoad.php';
+    
     $url = $_SERVER['REQUEST_URI'];
     if($url == '/')
     {
-        $className = 'Controller_Welcome';
+        $className = 'Controller_News';
         $method = 'index';
     }
     else 
@@ -20,6 +21,7 @@
         {
             $method = $controllerData[1];
         }
+        
         $className = 'Controller_'. $controllerData[0];
     }
 

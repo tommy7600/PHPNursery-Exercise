@@ -10,7 +10,7 @@
  *
  * @author tbula
  */
-class View_BaseView
+class Model_BaseView
 {
     private $fileName;
     private $viewData;
@@ -43,9 +43,6 @@ class View_BaseView
     
     private function capture()
     {
-//        // Import the view variables to local namespace
-//        extract($viewData, EXTR_SKIP);
-//
         if ($this->viewData)
         {
                 // Import the global view variables to local namespace
@@ -58,7 +55,7 @@ class View_BaseView
         try
         {
                 // Load the view within the current scope
-                include $this->fileName;
+                include '/View/'.$this->fileName;
         }
         catch (Exception $e)
         {

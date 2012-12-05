@@ -9,6 +9,8 @@ and open the template in the editor.
         <title></title>
         <link href="/res/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/res/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="/res/css/forms.css" rel="stylesheet" media="screen">
+        <link href="/res/css/news.css" rel="stylesheet" media="screen">
     </head>
     <body>
          <div class="container">
@@ -16,11 +18,17 @@ and open the template in the editor.
                 <div class="navbar-inner">
                     <div class="container">
                         <ul class="nav">
-                            <li class="active"><a href="News">News</a></li>
-                            <li><a href="Galery">Galery</a></li>
-                            <li><a href="Files">Files</a></li>
-                            <li><a href="Contact">Contact</a></li>
-                            <li><a href="AboutOus">About us</a></li>
+                            <?php
+                                foreach ($page as $key => $value)
+                                {
+                                    echo '<li';
+                                    if($value == 1)
+                                    {
+                                        echo ' class="active" ';
+                                    }
+                                    echo '><a href="'.$key.'">'.$key.'</a></li>';
+                                }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -32,6 +40,6 @@ and open the template in the editor.
             </div>  
         </div>
         <script src="/res/js/jquery-1.8.2.js"></script>
-        <script src="/res/js/bootstrap.min.js"></script>
+        <script src="/res/js/bootstrap.js"></script>
     </body>
 </html>
