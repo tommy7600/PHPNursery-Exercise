@@ -15,8 +15,7 @@ class Controller_News extends Controller_MasterController
 {
     public function __construct(Http_Request $request)
     {
-        parent::__construct($request);
-        $this->SetActivePage('News');
+        parent::__construct($request,'News');
     }
     
     public function action_index()

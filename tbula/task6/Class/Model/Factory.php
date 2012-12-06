@@ -15,7 +15,7 @@ class Model_Factory
     public static function GetViews()
     {
         return array('News'=>1,
-                    'Galery'=>0,
+                    'Gallery'=>0,
                     'Files'=>0,
                     'Contact'=>0,
                     'AboutUs'=>0);

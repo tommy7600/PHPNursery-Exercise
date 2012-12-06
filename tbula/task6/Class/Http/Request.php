@@ -26,17 +26,26 @@ class Http_Request
     
     public function Get()
     {
-        return $this->get = $_GET;
+        return $this->get = $this->FiltrInput($_GET);
     }
     
     public function Post()
     {
-        return $this->post = $_POST;
+       return $this->post = $this->FiltrInput($_POST);
     }
     
     public function File()
     {
         return $this->file = $_FILES;
+    }
+    
+    private function FiltrInput(array $data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $data[$key] = strip_tags($value);
+        }
+        return $data;
     }
 }
 

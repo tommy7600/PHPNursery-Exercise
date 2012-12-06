@@ -25,24 +25,31 @@
         $className = 'Controller_'. $controllerData[0];
     }
 
-    if(!class_exists($className))
+    try
     {
-      throw new Exception('Cannot find class '.$className);
-    }
+        if(!class_exists($className))
+        {
+          throw new Exception('Cannot find class '.$className);
+        }
 
-    $class = new ReflectionClass($className);
-    if($class->isAbstract())
+        $class = new ReflectionClass($className);
+        if($class->isAbstract())
+        {
+            throw  new Exception('Canot create instances of abstract '. $className);
+        }
+
+        $controller = $class->newInstance(new Http_Request());
+        if(!method_exists($className, 'action_'.$method))
+        {
+            throw new Exception('Cannot find method '.$method.' in class '.$className);
+        }
+
+        $class->getMethod('action_'.$method)->invoke($controller);    
+    }
+    catch (Exception $ex)
     {
-        throw  new Exception('Canot create instances of abstract '. $className);
+        echo $ex->getMessage();
     }
-
-    $controller = $class->newInstance(new Http_Request());
-    if(!method_exists($className, 'action_'.$method))
-    {
-        throw new Exception('Cannot find method '.$method.' in class '.$className);
-    }
-
-    $class->getMethod('action_'.$method)->invoke($controller);    
 
     
 

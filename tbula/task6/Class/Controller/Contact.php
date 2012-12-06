@@ -14,8 +14,7 @@ class Controller_Contact extends Controller_MasterController
 {
     public function __construct(Http_Request $request)
     {
-        parent::__construct($request);
-        $this->SetActivePage('Contact');
+        parent::__construct($request,'Contact');
     }
     
     public function action_index()
@@ -36,6 +35,11 @@ class Controller_Contact extends Controller_MasterController
             $email->SetContent($this->request->Post()['emailContent']);
             $email->SetSignature($this->request->Post()['signature']);
             $email->SetSubject($this->request->Post()['subject']);
+            
+            foreach ($this->request->Post() as $key => $value)
+            {
+                $view->SetVariable($key, $value);
+            }
             
             if(Common_Email::SendEmail($email))
             {

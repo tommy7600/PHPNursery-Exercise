@@ -26,7 +26,7 @@ and open the template in the editor.
                                     {
                                         echo ' class="active" ';
                                     }
-                                    echo '><a href="'.$key.'">'.$key.'</a></li>';
+                                    echo '><a href="/'.$key.'">'.$key.'</a></li>';
                                 }
                             ?>
                         </ul>

@@ -14,7 +14,7 @@ class Common_Email
 {
     public static function SendEmail(Model_Email $email)
     {
-       return mail($email->GetAddress(), $email->GetSubject(), $email->GetContent().'\\n\\n'.$email->GetSignature());
+       return mail(Config_Email::EMAIL, $email->GetSubject(), $email->GetContent().'\\n\\n'.$email->GetSignature(),'From: '.$email->GetAddress());
     }
 }
 

@@ -15,10 +15,11 @@ class Controller_MasterController extends Controller_BaseController
     protected $content;
     private $pages;
     
-    public function __construct(Http_Request $request)
+    public function __construct(Http_Request $request, $pageName)
     {
         parent::__construct($request);
         $this->pages = Model_Factory::GetViews();
+        $this->SetActivePage($pageName);
     }
     
     public function action_index()
@@ -29,7 +30,7 @@ class Controller_MasterController extends Controller_BaseController
         $this->response->body($view->render());
     }
     
-    protected function SetActivePage($pageName)
+    private function SetActivePage($pageName)
     {
         foreach ($this->pages as $key => $value)
         {
