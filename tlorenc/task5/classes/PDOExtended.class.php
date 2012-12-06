@@ -82,7 +82,6 @@ class PDOExtended extends PDO
             }
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
-            $this->debug();
             return false;
         }
     }
