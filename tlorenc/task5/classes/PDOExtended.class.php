@@ -86,11 +86,11 @@ class PDOExtended extends PDO
         }
     }
 
-    public function Select($table, $where = "", $bind = "", $fields = "*", $joinTable="", $joinStatment="")
+    public function Select($table, $where = "", $bind = "", $fields = "*", $joinTable = "", $joinStatment = "")
     {
         $sql = "SELECT " . $fields . " FROM " . $table;
         if (!empty($joinTable))
-            $sql .= " JOIN " .$joinTable. " ON " .$joinStatment;
+            $sql .= " JOIN " . $joinTable . " ON " . $joinStatment;
         if (!empty($where))
             $sql .= " WHERE " . $where;
         $sql .= ";";
