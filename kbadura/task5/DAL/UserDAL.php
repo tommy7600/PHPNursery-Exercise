@@ -31,8 +31,8 @@ class UserDAL
 
         $db = new DalPDO();
         $result = $db->select("users", $this->getAllColumnName(), $conditions)[0];
-
-        return $result;
+        $user = new User($result[0], $result[1], $result[2], $result[3], $result[4], $result[5], $result[6], $result[7], $result[8], $result[9]);
+        return $user;
     }
 
     public function find($name, $lastname, $pesel, $email)
@@ -90,8 +90,19 @@ class UserDAL
 
     public function insertUser(User $user)
     {
-        $db = new DalPDO();
-        $db->insert("users", $this->prepareData($user));
+        if($this->validateUser($user))
+        {
+            $db = new DalPDO();
+
+            if(!$db->insert("users", $this->prepareData($user)))
+            {
+                throw new Exception("Nie udało się dodać rekordu do bazy");
+            }
+        }
+        else
+        {
+
+        }
     }
 
     public function delete($id)

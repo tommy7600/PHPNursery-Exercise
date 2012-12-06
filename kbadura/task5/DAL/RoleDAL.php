@@ -12,7 +12,7 @@ class RoleDAL
     {
         $db = new DalPDO();
 
-        $result = $db->selectAll("roles", $this->getAllColumnName());
+        $result = $db->selectAll("role", $this->getAllColumnName());
 
         $roles = array();
 
@@ -28,14 +28,14 @@ class RoleDAL
     {
         $db = new DalPDO();
 
-        $db->insert("roles", $this->prepareData($role));
+        $db->insert("role", $this->prepareData($role));
     }
 
     public function update(Role $role)
     {
         $db = new DalPDO();
 
-        $db->update("roles", $this->prepareData($role), $role->getId());
+        $db->update("role", $this->prepareData($role), $role->getId());
     }
 
     public function getAllColumnName()

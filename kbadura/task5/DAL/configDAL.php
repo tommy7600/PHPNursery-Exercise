@@ -6,7 +6,7 @@
  */
 class configDAL
 {
-    const ConnectionString = "mysql:host=localhost;dbname=task5";
+    const ConnectionString = "mysql:host=localhost;dbname=zad5";
     const User = "root";
     const Password = "";
 }

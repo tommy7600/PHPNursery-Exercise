@@ -109,7 +109,7 @@ $usersRole = UserRoleConverter::convertToUserRole($users,$roles)
                                     <td class="center">'.$val->getUser()->getPhone().'</td>
                                     <td class="center">'.$val->getRole()->getName().'</td>
                                     <td class="center">
-                                        <a class="btn btn-info" href="editForm.php?action=edit&id='.$val->getUser()->getId().'">
+                                        <a class="btn btn-info" href="editUser.php?action=edit&id='.$val->getUser()->getId().'">
                                             <i class="icon-edit icon-white"></i>
                                             Edit
                                         </a>

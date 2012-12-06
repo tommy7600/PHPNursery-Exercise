@@ -15,7 +15,7 @@ class DalPDO extends PDO
 
     public function selectAll($table, array $columns)
     {
-        $query = 'Select '.implode(', ', array_values($columns)).' From '.$table;
+        $query = 'SELECT '.implode(', ', array_values($columns)).' FROM '.$table;
         $statment = $this->prepare($query);
         $statment->execute();
 
@@ -24,34 +24,34 @@ class DalPDO extends PDO
 
     public function update($table, array $columnsVals, $id)
     {
-        $query = "UPDATE ".$table." SET '".implode("'=? '", array_keys($columnsVals))."'=? WHERE 'id'=".$id;
+        $query = "UPDATE ".$table." SET ".implode("=?, ", array_keys($columnsVals))."=? WHERE id=".$id;
         $statment = $this->prepare($query);
 
         $paramId = 1;
 
-        foreach($columnsVals as $key=>&$val)
+        foreach($columnsVals as $key => &$val)
         {
             $statment->bindValue($paramId, $val);
             $paramId++;
         }
-
-        $statment->execute();
+        var_dump( $statment->execute());
 
         return $statment->rowCount();
     }
 
     public function select($tabel, array $columns, array $wheres)
     {
-        $query = "Select '". implode("', '",array_values($columns))."' FROM ".$tabel." WHERE ";
+        $query = "Select ". implode(", ",array_values($columns))." FROM ".$tabel." WHERE ";
 
-        $where = implode("=? AND ", array_key($wheres));
+        $where = implode("=? AND ", array_keys($wheres));
 
         $query.=$where;
+        $query.="=?";
 
         $statement = $this->prepare($query);
 
         $paramId = 1;
-        foreach($wheres as $key => &$val)
+        foreach($wheres as $key => $val)
         {
             $statement->bindValue($paramId, $val);
             $paramId++;
@@ -64,20 +64,14 @@ class DalPDO extends PDO
 
     public function insert($table, array $vals)
     {
-        $query = "INSERT INTO ".$table." ( '".implode("', '", array_keys($vals))."') VALUES ( :".implode(', :', array_keys($vals)).")";
-        var_dump($query);
+        $query = "INSERT INTO ".$table." ( ".implode(", ", array_keys($vals)).") VALUES ( :".implode(', :', array_keys($vals)).")";
         $statement = $this->prepare($query);
 
         foreach($vals as $key => &$val)
         {
             $statement->bindValue(":".$key, $val);
         }
-        var_dump($statement);
-        $isOk = $statement->execute();
-        var_dump($statement);
-        $statement = null;
-        var_dump($isOk);
-        return $isOk;
+        return $statement->execute();
     }
 
     public function delete($table, $id)
