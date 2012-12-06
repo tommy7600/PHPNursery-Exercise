@@ -73,8 +73,12 @@ $content = '<form id="editForm" class="form-horizontal" method="post" action="in
             <select name="u_role_id">';
 
 $roles = Role::GetRoles($db);
+
 foreach ($roles As $key => $value) {
-    $content .= '<option value="' . $value["r_id"] . '">' . $value["r_name"] . '</option>';
+    $content .= '<option value="' . $value["r_id"] . '" ';
+    if ($value["r_id"] == $userToEdit->GetRole())
+        $content .= 'selected="selected"';
+    $content .= '>' . $value["r_name"] . '</option>';
 }
 
 $content .= '</select>
