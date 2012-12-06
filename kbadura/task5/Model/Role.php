@@ -34,9 +34,4 @@ class Role
         $this->id = $id;
         $this->name = $name;
     }
-
-    public static function getAllColumnName()
-    {
-        return array("id", "name","description");
-    }
 }
