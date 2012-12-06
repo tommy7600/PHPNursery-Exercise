@@ -1,0 +1,25 @@
+header .span6 .nav.nav-pills.pull-right {
+    margin-top: 13px;
+    margin-bottom: 12px;
+}
+
+#content {
+    margin-top: 20px;
+}
+
+#content .btn-group-top {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+    
+#all {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 90%;
+}
+
+.alert, .alert-error
+{
+    margin-top: 15px;
+}
