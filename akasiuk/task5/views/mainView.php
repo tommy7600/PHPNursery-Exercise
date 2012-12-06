@@ -41,7 +41,7 @@ if (!defined('INCLUDED'))
             
                 <div class="alert alert-error">
                     <button type="button" class="close" data-dismiss="alert">×</button>
-                    <?php echo $errorMessage ?>
+                    <?php echo $errorMessage; ?>
                 </div>
             
                 <?php
@@ -115,7 +115,7 @@ if (!defined('INCLUDED'))
                             <?php
                             foreach ($roles as $role)
                             {
-                                echo '<option value="' . $role->GetId() . '">' . $role->GetName() . '</option>';
+                                echo '<option value="' . $role->GetId() . '"' . ((isset($editedUser) && $editedUser->GetRole()->GetId() == $role->GetId()) ? 'selected="selected"' : '') . '>' . $role->GetName() . '</option>';
                             }
                             ?>
                         </select>
