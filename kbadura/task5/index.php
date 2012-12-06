@@ -8,14 +8,23 @@
 try {
     require_once("autoloader.php");
 } catch (Exception $e) {
-    include ("content/error.php");
 }
 
 $userDal = new UserDAL();
-$users = $userDal->selectAll();
 $roleDal = new RoleDAL();
-$roles = $roleDal->selectAll();
 
+if(isset($_GET["action"]))
+{
+    if($_GET["action"] == "delete")
+    {
+        if (isset($_GET["id"]))
+        {
+            $userDal->delete(intval($_GET["id"]));
+        }
+    }
+}
+$users = $userDal->selectAll();
+$roles = $roleDal->selectAll();
 $usersRole = UserRoleConverter::convertToUserRole($users,$roles)
 
 ?>
@@ -27,12 +36,12 @@ $usersRole = UserRoleConverter::convertToUserRole($users,$roles)
     <meta name="description" content="Opis strony zaleane 160 znaków">
     <meta name="keywords" content="key, key, key">
 
-    <title>Admin dashboard</title>
+    <title>Users Admin</title>
 
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <script src="assets/js/jquery-1.8.2.js"></script>
+    <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/bootstrap-dropdown.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
@@ -46,15 +55,6 @@ $usersRole = UserRoleConverter::convertToUserRole($users,$roles)
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/bootstrap-tour.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#all').on('click', function(){
-                $(".users").prop("checked", $(this).prop("checked"));
-            });
-        });
-    </script>
-
 </head>
     <body>
         <div class="page-header">
@@ -109,15 +109,11 @@ $usersRole = UserRoleConverter::convertToUserRole($users,$roles)
                                     <td class="center">'.$val->getUser()->getPhone().'</td>
                                     <td class="center">'.$val->getRole()->getName().'</td>
                                     <td class="center">
-                                        <a class="btn btn-success" href="#">
-                                            <i class="icon-zoom-in icon-white"></i>
-                                            View
-                                        </a>
-                                        <a class="btn btn-info" href="#">
+                                        <a class="btn btn-info" href="editForm.php?action=edit&id='.$val->getUser()->getId().'">
                                             <i class="icon-edit icon-white"></i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger" href="index.php?action=delete&id='.$val->getUser()->getId().'">
                                             <i class="icon-trash icon-white"></i>
                                             Delete
                                         </a>

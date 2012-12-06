@@ -25,6 +25,16 @@ class UserDAL
         return $users;
     }
 
+    public function selectById($id)
+    {
+        $conditions = array("id"=>$id);
+
+        $db = new DalPDO();
+        $result = $db->select("users", $this->getAllColumnName(), $conditions)[0];
+
+        return $result;
+    }
+
     public function find($name, $lastname, $pesel, $email)
     {
         $conditions = array();
@@ -84,6 +94,12 @@ class UserDAL
         $db->insert("users", $this->prepareData($user));
     }
 
+    public function delete($id)
+    {
+        $db = new DalPDO();
+        $db->delete("users", $id);
+    }
+
     public function getAllColumnName()
     {
         return array("id", "role_id", "pesel", "name", "lastname", "address", "postcode", "email", "phone", "create_date");
@@ -101,6 +117,8 @@ class UserDAL
         $columnValues["email"]=$user->getEmail();
         $columnValues["phone"]=$user->getPhone();
         $columnValues["create_date"]=$user->getCreatDate();
+
+        return $columnValues;
     }
 
     public  function validateUser(User $user)

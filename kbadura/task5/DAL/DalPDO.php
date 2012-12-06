@@ -65,21 +65,24 @@ class DalPDO extends PDO
     public function insert($table, array $vals)
     {
         $query = "INSERT INTO ".$table." ( '".implode("', '", array_keys($vals))."') VALUES ( :".implode(', :', array_keys($vals)).")";
+        var_dump($query);
         $statement = $this->prepare($query);
 
         foreach($vals as $key => &$val)
         {
             $statement->bindValue(":".$key, $val);
         }
-
+        var_dump($statement);
         $isOk = $statement->execute();
+        var_dump($statement);
         $statement = null;
+        var_dump($isOk);
         return $isOk;
     }
 
     public function delete($table, $id)
     {
-        $query = "DELETE FROM '".$table."' WHERE 'id'=".$id;
+        $query = "DELETE FROM ".$table." WHERE id=".$id;
 
         $statement = $this->prepare($query);
 
