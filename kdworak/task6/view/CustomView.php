@@ -3,16 +3,17 @@
     {
         // fields.
         public $data = array();
+        private $viewName;
         
         // constructor.
-        public function __construct() {
-            
+        public function __construct($viewName) {
+            $this->viewName = $viewName;
         }
         
         public function render()
         {
-            $y = "kamil";
-            include('view/Welcome.php');
+            $viewName = $this->viewName;
+            include('view/Layout.php');
         }
         
     }

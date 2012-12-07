@@ -38,7 +38,7 @@
                 $this->action = ($this->action = array_shift($chunks)) ?
                         $this->action = 'Action_' . ucfirst(strtolower($this->action)) :
                         'Action_Welcome';
-
+                
                 $this->parameters = $chunks ? $chunks : null;
         }
     }

@@ -1,0 +1,16 @@
+ul li
+{
+    display: inline;
+}
+
+li > img
+{
+    width: 100px;
+    height: 50px;
+}
+
+#fullImage
+{
+    margin-left: 25px;
+    width: 1000px;
+}
