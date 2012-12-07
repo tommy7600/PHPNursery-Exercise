@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html doctype>
     <head>
         <base href="http://localhost/task6/">
@@ -42,22 +45,22 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="//localhost/task6/files/show/">
                                         <i class="icon-folder-open icon-white"></i> Files
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="//localhost/task6/gallery/show/">
                                         <i class="icon-camera icon-white"></i> Gallery
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="//localhost/task6/about/about/">
                                         <i class="icon-question-sign icon-white"></i> About
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="//localhost/task6/contact/contact/">
                                         <i class="icon-envelope icon-white"></i> Contact
                                     </a>
                                 </li>
@@ -70,7 +73,7 @@
             <div id="content" class="container-fluid">         
                     <div class="span11">
                         <?php 
-                            include $viewName . '.php';
+                            include 'View_' . $viewName . '.php';
                         ?>
                     </div>
                 </div>
