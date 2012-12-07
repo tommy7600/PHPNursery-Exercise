@@ -1,31 +1,37 @@
-<div class="paggination">
+<div class="pagination">
     <ul>
-    <?php
-        $this->active = 1;
-        $this->elementByPage = 3;
-        $this->elementsCount = 9;
-        $this->link = '/res/img/gallery/';
-        $this->maxPageVisible = 3;
+        <?php
         
-        $pageCount = $this->elementsCount / $this->elementBypage + ( $this->elementsCount%$this->elementBypage == 0 ? 0 : 1 );
-        echo '<li><a href="'.$this->link.'"1>\<\<</a></li>';
-        for($i = 0; $i<$this->maxPageVisible;$i++)
+        $pageCount = (int)($elementsCount / $elementByPage) + ( $elementsCount % $elementByPage === 0 ? 0 : 1 );
+        $index = 0;
+        echo '<li><a href="' . $link . '1"><<</a></li>';
+
+        if ($active + (int)($maxPageVisible / 2) >= $pageCount)
         {
-            
+            $index = ($pageCount< $maxPageVisible)? 1:$pageCount - $maxPageVisible;
         }
-        
-        echo '<li><a href="'.$this->link + $pageCount.'"1>\<\<</a></li>';
-    ?>
-    </ul>
-</div>
+        else
+        {
+            $index = $active - (int)($maxPageVisible / 2);
+            if ($index < 1)
+            {
+                $index = 1;
+            }
+        }
+        $i = 0;
+        while($i < $maxPageVisible && $i<$pageCount)
+        {
+            echo '<li';
+            if($active === $index)
+            {
+                echo ' class="active" ';
+            }
+            echo '><a href="' . $link . $index . '">' . $index . '</a></li>';
+             $i++;
+             $index++;
+        }
 
-
-
-<div class="span4 offset5 pagination">
-    <ul>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
+        echo '<li><a href="' . $link . $pageCount . '">>></a></li>';
+        ?>
     </ul>
 </div>

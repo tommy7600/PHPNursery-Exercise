@@ -1,15 +1,24 @@
-<table>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
+<table border="1">
+    <?php
+        $imgIndex = ($activePage - 1) * Config_Gallery::IMAGEBYPAGE + 1;
+        $rowItemsCount = 3;
+        for ($i = 0; $i < Config_Gallery::IMAGEBYPAGE; $i++)
+        {
+            if($i%$rowItemsCount === 0)
+            {
+                echo '<tr>';
+            }
+            
+            echo '<td><img src="' . Config_Gallery::IMAGESOURCE . $imgIndex . '.jpg" width="200" heigth="100"></img></td>';
+            $imgIndex++;
+            
+            if($i%$rowItemsCount === $rowItemsCount-1)
+            {
+                echo '</tr>';
+            }
+        }
+    ?>
 </table>
-<div class="span4 offset5 pagination">
-    <ul>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-    </ul>
-</div>
+<?php
+    echo $paggination;
+?>

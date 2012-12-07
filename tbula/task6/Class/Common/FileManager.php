@@ -10,9 +10,12 @@
  *
  * @author tbula
  */
-class FileManager
+class Common_FileManager
 {
-    //put your code here
+    public static function GetDirectoryFilesCount($directory, $extension = null)
+    {
+        return 15;
+    }
 }
 
 ?>
