@@ -13,7 +13,7 @@
         
         public function WelcomeAction()
         {
-            echo 'WELCOME!!!';
+            
         }
         
         public function execute()

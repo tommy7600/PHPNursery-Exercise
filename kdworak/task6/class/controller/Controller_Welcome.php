@@ -1,7 +1,6 @@
 <?php
     class Controller_Welcome
     {
-        
         // FIELDS
         private $request;
         private $response;
@@ -9,24 +8,15 @@
         public function __construct(Request $request, Response $response) {
             $this->request = $request;
             $this->response = $response;
-            echo 'TTTTTTT';
         }
         
         public function Action_Welcome()
         {
-            echo 'WELCOME!!!';
-            
-            $x = '####################';
-            
-            //include 'view/Welcome.php';
-            
-            $view = new CustomView();
-            array_push($view->data, $x);
+            $view = new CustomView('Welcome'); 
             $view->render();
-            
-            
         }
         
+        // execute function.
         public function execute()
         {
             $action = $this->request->action;

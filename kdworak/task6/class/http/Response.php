@@ -14,11 +14,5 @@
         
         public function __get($name) {
             return $this->$name;
-        }
-        
-        public function send()
-        {
-            
-        }
-        
+        }      
     }
