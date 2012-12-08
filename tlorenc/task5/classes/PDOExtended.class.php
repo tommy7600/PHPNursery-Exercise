@@ -84,15 +84,15 @@ class PDOExtended extends PDO
         }
     }
 
-    public function Select($table, $where = "", $bind = "", $fields = "*", $joinType = "", $joinTable = "", $joinStatement = "", $orderByType = "", $orderField = "")
+    public function Select($table, $where = "", $bind = "", $fields = "*", $joinType = "", $joinTable = "", $joinStatement = "", $orderByType = "", $orderByField = "")
     {
         $sql = "SELECT " . $fields . " FROM " . $table;
         if (!empty($joinType) && !empty($joinStatement) && !empty($joinTable))
             $sql .= " " . $joinType . " " . $joinTable . " ON " . $joinStatement;
         if (!empty($where))
             $sql .= " WHERE " . $where;
-        if (!empty($orderField) && !empty($oderField))
-            $sql .= " ORDER BY " . $orderField . " " . $orderByType;
+        if (!empty($orderByType) && !empty($orderByField))
+            $sql .= " ORDER BY " . $orderByField . " " . $orderByType;
         $sql .= ";";
         return $this->Run($sql, $bind);
         //SELECT * FROM users JOIN roles ON users.u_role_id=roles.r_id WHERE u_name LIKE '%mek%';
