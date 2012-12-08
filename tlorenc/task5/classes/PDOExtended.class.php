@@ -2,7 +2,6 @@
 
 class PDOExtended extends PDO
 {
-    private $error;
     private $sql;
     private $bind;
 
@@ -70,7 +69,6 @@ class PDOExtended extends PDO
     {
         $this->sql = trim($sql);
         $this->bind = $this->cleanup($bind);
-        $this->error = "";
 
         try {
             $pdostmt = $this->prepare($this->sql);
