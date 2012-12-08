@@ -38,7 +38,7 @@ $content = '<form id="editForm" class="form-horizontal" method="post" action="in
         <label class="control-label" for="inputPhone">Phone</label>
 
         <div class="controls">
-            <input type="text" name="u_phone" id="inputPhone" required [0-9]{1,} value="' . $userToEdit->GetPhone() . '" title="Please input user phone number" x-moz-errormessage="Please input user phone number">
+            <input type="text" name="u_phone" id="inputPhone" required pattern="[0-9]{1,}" value="' . $userToEdit->GetPhone() . '" title="Please input user phone number" x-moz-errormessage="Please input user phone number">
         </div>
     </div>
 
