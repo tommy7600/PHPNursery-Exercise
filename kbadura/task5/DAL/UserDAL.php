@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
  * User: kbadura
  * Date: 12/5/12
  * Time: 10:04 AM
- * To change this template use File | Settings | File Templates.
  */
 class UserDAL
 {
@@ -76,7 +74,7 @@ class UserDAL
 
         foreach($result as $key => $val)
         {
-            $users[]=new User($val[0], $val[1], $val[2], $val[3], $val[4], $val[5],  $val[6], $val[7], $val[9], $val[10]);
+            $users[]=new User($val[0], $val[1], $val[2], $val[3], $val[4], $val[5],  $val[6], $val[7], $val[8], $val[9]);
         }
 
         return $users;
@@ -85,7 +83,10 @@ class UserDAL
     public function updateUser(User $user)
     {
         $db = new DalPDO();
-        $db->update("users", $this->prepareData($user), $user->getId());
+        if($this->validateUser($user))
+        {
+            $db->update("users", $this->prepareData($user), $user->getId());
+        }
     }
 
     public function insertUser(User $user)
@@ -98,10 +99,6 @@ class UserDAL
             {
                 throw new Exception("Nie udało się dodać rekordu do bazy");
             }
-        }
-        else
-        {
-
         }
     }
 
