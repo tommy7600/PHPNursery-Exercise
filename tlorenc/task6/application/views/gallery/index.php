@@ -25,7 +25,6 @@ $content = '
 
 <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">';
 
-$gg = new GalleryModel();
 $content .= $this->images;
 
 $content .= '</div>';
