@@ -1,5 +1,6 @@
 <?php
 
+
 class error implements IController
 {
     const VIEWS_FOLDER = '../views/error/';
