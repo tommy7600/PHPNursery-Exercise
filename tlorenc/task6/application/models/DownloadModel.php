@@ -62,7 +62,7 @@ class DownloadModel
 
                         case "zip":
 
-                            $content .= ' src="res/img/fileformats/jpg.png"></td>';
+                            $content .= ' src="res/img/fileformats/zip.png"></td>';
                             break;
 
                         case "exe":

@@ -21,7 +21,7 @@ class Template
         return true;
     }
 
-    public function file_to_string($file)
+    public function fileToString($file)
     {
         ob_start();
         include $file;
