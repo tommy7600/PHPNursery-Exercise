@@ -1,0 +1,23 @@
+#wrapper
+	{
+	margin: auto auto;
+}
+
+#header h1 {
+	text-align: center;
+	color: #006400;
+}
+
+#login {
+	margin-top: 100px; 
+	width: 400px;
+	height: 330px;
+}
+
+#forgot {
+	color: #FF0000;
+}
+
+#register {
+	color: #0000CC;
+}
