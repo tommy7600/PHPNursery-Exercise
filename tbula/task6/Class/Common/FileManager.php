@@ -14,7 +14,14 @@ class Common_FileManager
 {
     public static function GetDirectoryFilesCount($directory, $extension = null)
     {
-        return 15;
+        $fileCount =0;
+        if(glob(Config_Gallery::IMAGESOURCE.'*.'.$extension))
+        {
+            
+            $fileCount = count(glob(Config_Gallery::IMAGESOURCE.'*.'.$extension));
+        }
+        
+        return $fileCount;
     }
 }
 

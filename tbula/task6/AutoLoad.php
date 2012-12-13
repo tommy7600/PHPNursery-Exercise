@@ -2,6 +2,15 @@
     function __autoload($classname) 
     {
         $classname = str_replace('_', '\\', $classname);
-        include('Class\\'.$classname.'.php');
+        $path = 'Class\\'.$classname.'.php';
+        
+        if (is_file($path))
+        {
+            include $path;
+        }
+        else
+        {
+            throw new Exception('Cannot find class ' . $classname);
+        }
     }
 ?>

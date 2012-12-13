@@ -20,9 +20,11 @@ class Controller_Gallery extends Controller_MasterController
     public function action_index()
     {
         $view = new Model_BaseView('Gallery.php');
-        $activePage = (isset($this->request->get()['post']))? $this->request->Get()['page'] : 1;
+       
+        $activePage = (isset($this->request->Get()['page'])) ? $this->request->Get()['page'] : 1;
         $view->SetVariable('activePage', $activePage);
-        $filesCount = Common_FileManager::GetDirectoryFilesCount(Config_Gallery::IMAGESOURCE,'jpeg');
+        
+        $filesCount = Common_FileManager::GetDirectoryFilesCount(Config_Gallery::IMAGESOURCE,'jpg');
         $pagination = new Model_BaseView('Pagination.php');
         $pagination->SetVariable('active', $activePage);
         $pagination->SetVariable('elementByPage', Config_Gallery::IMAGEBYPAGE);

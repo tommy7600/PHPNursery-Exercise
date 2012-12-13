@@ -14,13 +14,17 @@ class Controller_BaseController
 {
     protected $response;
     protected $request;
-    
+
     public function __construct(Http_Request $request)
     {
         $this->request = $request;
         $this->response = new Http_Response();
     }
     
+    public function body()
+    {
+        return $this->response;
+    }
 }
 
 ?>

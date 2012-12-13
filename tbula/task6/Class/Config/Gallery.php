@@ -12,9 +12,9 @@
  */
 class Config_Gallery
 {
-    const IMAGEBYPAGE = 6;
+    const IMAGEBYPAGE = 2;
     const PAGEVISIBLE = 5;
-    const IMAGESOURCE ='/res/img/gallery/';
+    const IMAGESOURCE ='res/img/gallery/';
 }
 
 ?>
