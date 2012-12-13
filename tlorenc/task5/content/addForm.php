@@ -4,7 +4,7 @@ $content = '<form id="addForm" class="form-horizontal" method="post" action="ind
         <label class="control-label" for="inputName">Name</label>
 
         <div class="controls">
-            <input type="text" name="u_name" id="inputName" required pattern="[A-z]{1,}" placeholder="Name" title="Please input user name. Name have to contain min. 1 letter" x-moz-errormessage="Please input user name. Name have to contain min. 1 letter">
+            <input type="text" name="u_name" id="inputName" required pattern="[A-z\s]{1,}" placeholder="Name" title="Please input user name. Name have to contain min. 1 letter" x-moz-errormessage="Please input user name. Name have to contain min. 1 letter">
         </div>
     </div>
 
@@ -12,7 +12,7 @@ $content = '<form id="addForm" class="form-horizontal" method="post" action="ind
         <label class="control-label" for="inputSurname">Surname</label>
 
         <div class="controls">
-            <input type="text" name="u_surname" id="inputSurname" required pattern="[A-z]{1,}" placeholder="Surname" title="Please input user surname. Name have to contain min. 1 letter" x-moz-errormessage="Please input user surnam. Name have to contain min. 1 letter">
+            <input type="text" name="u_surname" id="inputSurname" required pattern="[A-z\s]{1,}" placeholder="Surname" title="Please input user surname. Name have to contain min. 1 letter" x-moz-errormessage="Please input user surnam. Name have to contain min. 1 letter">
         </div>
     </div>
 

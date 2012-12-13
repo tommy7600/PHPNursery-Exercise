@@ -1,31 +1,25 @@
 <?php
-class index implements IController
+
+class Index implements IController
 {
+    const VIEWS_FOLDER = '../views/index/';
+
     public function index()
     {
         $view = new View();
-        $view->name = "Tomek";
-        $result = $view->render('../views/index.php');
+        $carousel = new Carousel();
         $fc = FrontController::getInstance();
-        $fc->setBody($result);
-    }
 
-    public function index2()
-    {
-        $view = new View();
-        $view->name = "Tomek2";
-        $result = $view->render('../views/index.php');
-        $fc = FrontController::getInstance();
-        $fc->setBody($result);
-    }
+        $view->slider = $carousel->getSlider();
 
-    public function bootstrap()
-    {
-        $view = new View();
-        $view->title = "Title TEST";
-        $view->content = "<h2>Welcome to this test site</h2>";
-        $result = $view->render('../views/bootstrap.php');
-        $fc = FrontController::getInstance();
+//		$params = $fc->getParams();
+//
+//		foreach ($params as $name=>$value) {
+//			$view->$name = $value;
+//	}
+
+        $result = $view->render(self::VIEWS_FOLDER . 'index.php');
+
         $fc->setBody($result);
     }
 }

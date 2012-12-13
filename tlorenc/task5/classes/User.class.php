@@ -198,7 +198,6 @@ class User
             "u_post_code" => $this->GetPostCode(),
             "u_phone" => $this->GetPhone(),
             "u_address" => $this->GetAddress(),
-            "u_add_date" => $this->GetAddDate(),
             "u_role_id" => $this->GetRole(),
             "u_email" => $this->GetEmail()
         );

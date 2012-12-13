@@ -2,7 +2,6 @@
 
 class PDOExtended extends PDO
 {
-    private $error;
     private $sql;
     private $bind;
 
@@ -16,7 +15,7 @@ class PDOExtended extends PDO
         try {
             parent::__construct($dsn, $user, $password, $options);
         } catch (PDOException $e) {
-            $this->error = $e->getMessage();
+            echo "PDO Exception message: " . $e->getMessage();
         }
     }
 
@@ -33,7 +32,7 @@ class PDOExtended extends PDO
             $sql = "DESCRIBE " . $table . ";";
             $key = "Field";
         } else {
-            throw new Exception("Lack off mysql pdo driver");
+            throw new Exception("Lack off MySQL pdo driver");
         }
 
         if (false !== ($list = $this->Run($sql))) {
@@ -70,7 +69,6 @@ class PDOExtended extends PDO
     {
         $this->sql = trim($sql);
         $this->bind = $this->cleanup($bind);
-        $this->error = "";
 
         try {
             $pdostmt = $this->prepare($this->sql);
@@ -81,18 +79,20 @@ class PDOExtended extends PDO
                     return $pdostmt->rowCount();
             }
         } catch (PDOException $e) {
-            $this->error = $e->getMessage();
+            echo "PDO Exception message: " . $e->getMessage();
             return false;
         }
     }
 
-    public function Select($table, $where = "", $bind = "", $fields = "*", $joinTable = "", $joinStatment = "")
+    public function Select($table, $where = "", $bind = "", $fields = "*", $joinType = "", $joinTable = "", $joinStatement = "", $orderByType = "", $orderByField = "")
     {
         $sql = "SELECT " . $fields . " FROM " . $table;
-        if (!empty($joinTable))
-            $sql .= " JOIN " . $joinTable . " ON " . $joinStatment;
+        if (!empty($joinType) && !empty($joinStatement) && !empty($joinTable))
+            $sql .= " " . $joinType . " " . $joinTable . " ON " . $joinStatement;
         if (!empty($where))
             $sql .= " WHERE " . $where;
+        if (!empty($orderByType) && !empty($orderByField))
+            $sql .= " ORDER BY " . $orderByField . " " . $orderByType;
         $sql .= ";";
         return $this->Run($sql, $bind);
         //SELECT * FROM users JOIN roles ON users.u_role_id=roles.r_id WHERE u_name LIKE '%mek%';
