@@ -1,6 +1,6 @@
 <?php
 
-class Index implements IController
+class index implements IController
 {
     const VIEWS_FOLDER = '../views/index/';
 

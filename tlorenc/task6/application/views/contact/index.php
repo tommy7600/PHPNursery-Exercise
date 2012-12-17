@@ -74,7 +74,7 @@ $content .= '<div class="clearfix" >
     </div ><!--form -->
 </div ><!--row -->';
 
-$template = new Template('Task 6 - GALAXY', 'res/templates/html/index.html.php');
+$template = new Template('Task 6 - GALAXY', 'res/templates/html/index.html');
 $template->setContent('{MENU}', $menu);
 $template->setContent('{MAIN_CONTENT}', $content);
 $template->display();

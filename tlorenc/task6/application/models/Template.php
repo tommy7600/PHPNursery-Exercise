@@ -6,7 +6,10 @@ class Template
 
     public function __construct($title, $pathToTemplate)
     {
+        $conf = Conf::getInstance();
+        $baseHref = 'http://'.$_SERVER['HTTP_HOST'] . trim($conf->main['web_folder']);
         $this->template = str_replace('{TITLE}', $title, file_get_contents($pathToTemplate));
+        $this->template = str_replace('{BASE}', $baseHref, $this->template);
     }
 
     public function setContent($section, $content)
@@ -21,7 +24,7 @@ class Template
         return true;
     }
 
-    public function fileToString($file)
+    public function fileToContent($file)
     {
         ob_start();
         include $file;

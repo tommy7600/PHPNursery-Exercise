@@ -1,4 +1,5 @@
 <?php
+$GALLERY_FOLDER = 'upload/gallery';
 $menu = '<ul class="nav">
                     <li><a href=".">Home</a></li>
                     <li class="active"><a href="gallery">Gallery</a></li>
@@ -24,12 +25,13 @@ $content = '
 </div>
 
 <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">';
+foreach ($this->images As $file)
+$content .= '<a href="' . $GALLERY_FOLDER . '/' . $file . '" title="' . $file . '" rel="gallery"><img  style="height: 75px !important" width="75" src="' . $GALLERY_FOLDER . '/' . $file . '"></a>';
 
-$content .= $this->images;
 
 $content .= '</div>';
 
-$template = new Template('Task 6 - GALAXY', 'res/templates/html/index.html.php');
+$template = new Template('Task 6 - GALAXY', 'res/templates/html/index.html');
 $template->setContent('{MENU}', $menu);
 $template->setContent('{MAIN_CONTENT}', $content);
 $template->display();
