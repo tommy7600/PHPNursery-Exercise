@@ -8,9 +8,10 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
+    <base href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . trim(Conf::getInstance()->main['web_folder'])?>">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title><?php echo $this->title ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -48,10 +49,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href=".">{TITLE}</a>
+            <a class="brand" href="."><?php echo $this->title ?></a>
 
             <div class="nav-collapse collapse">
-                {MENU}
+                <ul class="nav">
+                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'index')) echo 'class="active"' ?>><a href="index">Home</a>
+                    </li>
+                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'gallery')) echo 'class="active"' ?>><a
+                            href="gallery">Gallery</a></li>
+                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'download')) echo 'class="active"' ?>><a
+                            href="download">Download</a></li>
+                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'about')) echo 'class="active"' ?>><a href="about">About</a>
+                    </li>
+                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'contact')) echo 'class="active"' ?>><a
+                            href="contact">Contact</a></li>
+                </ul>
             </div>
             <!--/.nav-collapse -->
         </div>
@@ -59,14 +71,11 @@
 </div>
 
 <div class="container">
-    {MAIN_CONTENT}
-
+    <?php echo $this->content ?>
     <hr>
-
     <footer>
         <p>&copy; Company 2012</p>
     </footer>
-
 </div>
 <!-- /container -->
 

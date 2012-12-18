@@ -6,12 +6,12 @@ class error implements IController
     const VIEWS_FOLDER = '../views/error/';
 
     public function index()
-{
-    $view = new View();
-    $fc = FrontController::getInstance();
+    {
+        $view = new View();
+        $fc = FrontController::getInstance();
 
-    $result = $view->render(self::VIEWS_FOLDER . './index.php');
+        $result = $view->render(self::VIEWS_FOLDER . './index.php');
 
-    $fc->setBody($result);
-}
+        $fc->setBody($result);
+    }
 }

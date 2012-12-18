@@ -2,7 +2,6 @@
  * Headings, body text, lists, code, and more for a versatile and durable typography system
  * ---------------------------------------------------------------------------------------- */
 
-
 // BODY TEXT
 // ---------
 
@@ -15,7 +14,6 @@ p {
   }
 }
 
-
 // HEADINGS
 // --------
 
@@ -26,6 +24,7 @@ h1, h2, h3, h4, h5, h6 {
     color: @grayLight;
   }
 }
+
 h1 {
   margin-bottom: @baseline;
   font-size: 30px;
@@ -34,6 +33,7 @@ h1 {
     font-size: 18px;
   }
 }
+
 h2 {
   font-size: 24px;
   line-height: @baseline * 2;
@@ -41,30 +41,34 @@ h2 {
     font-size: 14px;
   }
 }
+
 h3, h4, h5, h6 {
   line-height: @baseline * 2;
 }
+
 h3 {
   font-size: 18px;
   small {
     font-size: 14px;
   }
 }
+
 h4 {
   font-size: 16px;
   small {
     font-size: 12px;
   }
 }
+
 h5 {
   font-size: 14px;
 }
+
 h6 {
   font-size: 13px;
   color: @grayLight;
   text-transform: uppercase;
 }
-
 
 // COLORS
 // ------
@@ -73,22 +77,27 @@ h6 {
 ul, ol {
   margin: 0 0 @baseline 25px;
 }
+
 ul ul,
 ul ol,
 ol ol,
 ol ul {
   margin-bottom: 0;
 }
+
 ul {
   list-style: disc;
 }
+
 ol {
   list-style: decimal;
 }
+
 li {
   line-height: @baseline;
   color: @gray;
 }
+
 ul.unstyled {
   list-style: none;
   margin-left: 0;
@@ -123,11 +132,13 @@ strong {
   font-style: inherit;
   font-weight: bold;
 }
+
 em {
   font-style: italic;
   font-weight: inherit;
   line-height: inherit;
 }
+
 .muted {
   color: @grayLight;
 }
@@ -165,11 +176,13 @@ code, pre {
   font-size: 12px;
   .border-radius(3px);
 }
+
 code {
   background-color: lighten(@orange, 40%);
-  color: rgba(0,0,0,.75);
+  color: rgba(0, 0, 0, .75);
   padding: 1px 3px;
 }
+
 pre {
   background-color: #f5f5f5;
   display: block;
@@ -178,7 +191,7 @@ pre {
   line-height: @baseline;
   font-size: 12px;
   border: 1px solid #ccc;
-  border: 1px solid rgba(0,0,0,.15);
+  border: 1px solid rgba(0, 0, 0, .15);
   .border-radius(3px);
   white-space: pre;
   white-space: pre-wrap;

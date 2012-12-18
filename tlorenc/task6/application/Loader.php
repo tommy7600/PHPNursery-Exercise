@@ -17,10 +17,14 @@ class Loader
         }
     }
 
-    public static function exception_handler($exception) {
-        //echo "Uncaught exception: " , $exception->getMessage(), "\n";
+    public static function exception_handler($exception)
+    {
+
         $conf = Conf::getInstance();
-        header("Location: ".$conf->main['web_folder']."error");
+        if ((bool)trim($conf->main['show_exceptions']))
+            echo "Exception message: ", $exception->getMessage(), "\n";
+        else
+            header("Location: " . $conf->main['web_folder'] . "error");
     }
 
 }
