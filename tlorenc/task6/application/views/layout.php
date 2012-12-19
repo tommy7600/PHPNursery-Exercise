@@ -8,7 +8,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
-    <base href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . trim(Conf::getInstance()->main['web_folder'])?>">
+    <base href="<?php echo HTML::baseUrl()?>">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><?php echo $this->title ?></title>
@@ -31,6 +31,7 @@
     <script src="res/js/bootstrap.min.js"></script>
     <script src="res/js/load-image.min.js"></script>
     <script src="res/js/bootstrap-image-gallery.min.js"></script>
+
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -53,15 +54,15 @@
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'index')) echo 'class="active"' ?>><a href="index">Home</a>
+                    <li><a href="index">Home</a>
                     </li>
-                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'gallery')) echo 'class="active"' ?>><a
+                    <li><a
                             href="gallery">Gallery</a></li>
-                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'download')) echo 'class="active"' ?>><a
+                    <li><a
                             href="download">Download</a></li>
-                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'about')) echo 'class="active"' ?>><a href="about">About</a>
+                    <li><a href="about">About</a>
                     </li>
-                    <li <?php if (strpos($_SERVER["REQUEST_URI"], 'contact')) echo 'class="active"' ?>><a
+                    <li><a
                             href="contact">Contact</a></li>
                 </ul>
             </div>
