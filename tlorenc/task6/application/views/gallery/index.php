@@ -18,7 +18,6 @@
 <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
     <?php foreach ($this->images As $file): ?>
     <a href="<?php echo $this->gallery_folder . '/' . $file ?>" title="<?php echo $file ?>" rel="gallery"><img
-            style="height: 75px !important" width="75" src="<?php echo $this->gallery_folder . '/' . $file ?>"></a>
+            style="margin: -2px" src="<?php echo $this->gallery_folder . '/thumbs/' . $file ?>"></a>
     <?php endforeach ?>
 </div>
-

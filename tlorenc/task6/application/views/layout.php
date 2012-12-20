@@ -25,13 +25,6 @@
     <link rel="stylesheet" href="res/css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="res/css/main.css">
     <link rel="stylesheet" href="res/css/bootstrap-image-gallery.min.css">
-
-    <script src="res/js/jquery-1.8.3.min.js" type="text/javascript"></script>
-    <script src="res/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    <script src="res/js/bootstrap.min.js"></script>
-    <script src="res/js/load-image.min.js"></script>
-    <script src="res/js/bootstrap-image-gallery.min.js"></script>
-
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -54,16 +47,11 @@
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li><a href="index">Home</a>
-                    </li>
-                    <li><a
-                            href="gallery">Gallery</a></li>
-                    <li><a
-                            href="download">Download</a></li>
-                    <li><a href="about">About</a>
-                    </li>
-                    <li><a
-                            href="contact">Contact</a></li>
+                    <li id=home><a href="index">Home</a></li>
+                    <li id=gallery><a href="gallery">Gallery</a></li>
+                    <li id=download><a href="download">Download</a></li>
+                    <li id=about><a href="about">About</a></li>
+                    <li id=contact><a href="contact">Contact</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -82,11 +70,31 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="res/js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
-
 <script src="res/js/bootstrap.min.js"></script>
-
 <script src="res/js/plugins.js"></script>
 <script src="res/js/main.js"></script>
-
+<script src="res/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="res/js/load-image.min.js"></script>
+<script src="res/js/bootstrap-image-gallery.min.js"></script>
+<script>
+    $(function () {
+        var loc = window.location.href; // returns the full URL
+        if (/about/.test(loc)) {
+            $('#about').addClass('active');
+        }
+        else if (/contact/.test(loc)) {
+            $('#contact').addClass('active');
+        }
+        else if (/download/.test(loc)) {
+            $('#download').addClass('active');
+        }
+        else if (/gallery/.test(loc)) {
+            $('#gallery').addClass('active');
+        }
+        else {
+            $('#home').addClass('active');
+        }
+    });
+</script>
 </body>
 </html>
