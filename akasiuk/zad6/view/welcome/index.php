@@ -1,0 +1,1 @@
+<h1>Cześć <?php echo $imie ?></h1>
