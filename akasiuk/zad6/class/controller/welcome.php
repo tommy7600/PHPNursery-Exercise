@@ -1,1 +1,1 @@
-<?phpclass Controller_Welcome extends Controller{    public function action_index()    {        $this->view->content->imie = 'adrian';    }}
+<?phpclass Controller_Welcome extends Controller_Gallery{               public function action_index()    {        $this->path = 'banners/';                $this->view->content->images = $this->getImages();      }}

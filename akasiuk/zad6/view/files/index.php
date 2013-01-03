@@ -1,4 +1,5 @@
-<table>
+<h1>Pliki</h1>
+<table class="table">
     <tr>
         <th>
             Plik

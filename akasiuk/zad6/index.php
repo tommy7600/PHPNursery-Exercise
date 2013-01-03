@@ -2,6 +2,9 @@
 
 define('ROOTDOC', __DIR__.DIRECTORY_SEPARATOR);
 
+require_once 'config.php';
+require_once ROOTDOC.'swift'.DIRECTORY_SEPARATOR.'swift_required.php';
+
 define('ENV_DEV', 10);
 define('ENV_TEST', 20);
 define('ENV_PROD', 30);
@@ -27,7 +30,7 @@ else
 	exit('Giń!');
 }
 
-function __autoload($class)
+function autoload($class)
 {
 	$path = ROOTDOC.'class'.DIRECTORY_SEPARATOR.str_replace('_', DIRECTORY_SEPARATOR, strtolower($class)).'.php';
 	
@@ -39,9 +42,10 @@ function __autoload($class)
 	include $path;
 }
 
+spl_autoload_register('autoload');
+
 $request = new HTTP_Request;
 $response = new HTTP_Response;
-
 
 $url = $request->getUrl();
 

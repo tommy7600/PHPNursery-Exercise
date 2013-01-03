@@ -3,7 +3,7 @@
 class View
 {
     protected $data = array(); 
-	protected $view = NULL;
+    protected $view = NULL;
 	
     public function __construct($view)
     {
@@ -12,15 +12,15 @@ class View
 
     public function render()
     {
-		extract($this->data);
+	extract($this->data);
 		
-		ob_start();
+	ob_start();
         include_once ROOTDOC.'view'.DIRECTORY_SEPARATOR.$this->view.'.php';
         $content = ob_get_contents();
         ob_end_clean();
 		
-		return $content;
-	}
+	return $content;
+    }
 
     public function __set($key, $value) 
     { 
