@@ -52,11 +52,11 @@ $url = $request->getUrl();
 $parts = explode('/', $url);
 
 // Kontroler
-$controller = isset($parts[1])
+$controller = isset($parts[1]) && strlen($parts[1]) > 0
 	? $parts[1] : 'welcome';
 
 // Akcja
-$action = isset($parts[2])
+$action = isset($parts[2]) && strlen($parts[2]) > 0
 	? $parts[2] : 'index';
 	
 $request->controller($controller);
