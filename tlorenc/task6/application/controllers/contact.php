@@ -1,15 +1,12 @@
 <?php
 
-class contact implements IController
+class contact extends Controller implements IController
 {
     const VIEWS_FOLDER = '../views/contact/';
-    const MASTER_LAYOUT = '../views/';
 
     public function index()
     {
-        $view = new View();
         $content = new View();
-
         $fc = FrontController::getInstance();
 
         if (isset($_POST['submit'])) {
@@ -58,15 +55,12 @@ class contact implements IController
             //If there is no error, send the email
             if (!isset($content->hasError)) {
                 $mailer = new Mailer();
-                $mailer->sendMail($subject, $view->name, $email, $phone, $comments);
+                $mailer->sendMail($subject, $content->name, $email, $phone, $comments);
                 $content->emailSent = true;
             }
         }
 
-        $conf = Conf::getInstance();
-        $view->title = trim($conf->main['site_title']);
-        $view->content = $content->render(self::VIEWS_FOLDER . 'index.php');
-        $result = $view->render(self::MASTER_LAYOUT . 'layout.php');
+        $result = $this->after($content->render(self::VIEWS_FOLDER . 'index.php'));
 
         $fc->setBody($result);
     }

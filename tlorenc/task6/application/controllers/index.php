@@ -1,29 +1,40 @@
 <?php
 
-class index implements IController
+class index extends Controller implements IController
 {
     const VIEWS_FOLDER = '../views/index/';
-    const MASTER_LAYOUT = '../views/';
 
     public function index()
     {
-        $view = new View();
         $content = new View();
-
         $conf = Conf::getInstance();
-        $carousel = new SliderDAL(trim($conf->slider['slider_folder']));
         $fc = FrontController::getInstance();
 
-        $content->files = $carousel->getImages();
+        $content->files = $this->getSliders(trim($conf->slider['slider_folder']));
         $content->dir = trim($conf->slider['slider_folder']);
 
-        $conf = Conf::getInstance();
-        $view->title = trim($conf->main['site_title']);
-        $view->content = $content->render(self::VIEWS_FOLDER . 'index.php');
-        $result = $view->render(self::MASTER_LAYOUT . 'layout.php');
+        $result = $this->after($content->render(self::VIEWS_FOLDER . 'index.php'));
 
         $fc->setBody($result);
     }
+
+    private function getSliders($slider_folder)
+    {
+        $files = array();
+
+        if ($dir = opendir($slider_folder)) {
+            while ($file = readdir($dir)) {
+
+                $ex = pathinfo($file);
+
+                if ($ex['extension'] == 'jpg') {
+                    array_push($files, $file);
+                }
+            }
+        }
+        return $files;
+    }
+
 }
 //		$params = $fc->getParams();
 //

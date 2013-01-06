@@ -1,22 +1,21 @@
-<?php //echo $this->slider ?>
 <div id="photo-montage" class="carousel-inner">
     <div id="myCarousel" class="carousel slide">
         <!-- Carousel items -->
         <div class="carousel-inner">
-            <?php $i = 0; foreach ($this->files as $file): ?>
-            <?php $class = ($i === 0) ? 'active item' : 'item';
-            $file_path = $this->dir . '/' . $file . '.txt';
-            $lines = file($file_path);?>
-            <div class="<?php echo $class ?>">
-                <img src="<?php echo $this->dir . '/' . $file; ?>" alt=" ">
+            <?php $i = 0; foreach ($files as $file): ?>
+                <?php $class = ($i === 0) ? 'active item' : 'item';
+                $file_path = $dir . '/' . $file . '.txt';
+                $lines = file($file_path);?>
+                <div class="<?php echo $class ?>">
+                    <img src="<?php echo $dir . '/' . $file; ?>" alt=" ">
 
-                <div class="carousel-caption">
-                    <h4><?php echo $lines[0] ?></h4>
+                    <div class="carousel-caption">
+                        <h4><?php echo $lines[0] ?></h4>
 
-                    <p><a href="<?php $lines[1] ?>">More info!</a></p>
+                        <p><a href="<?php echo $lines[1] ?>">More info!</a></p>
+                    </div>
                 </div>
-            </div>
-            <?php ++$i; ?>
+                <?php ++$i; ?>
             <?php endforeach ?>
         </div>
         <!-- Carousel nav -->

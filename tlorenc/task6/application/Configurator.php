@@ -2,7 +2,6 @@
 
 class Configurator
 {
-
     private static $rootPath = null;
     private static $appPath = null;
 
@@ -12,8 +11,8 @@ class Configurator
         self::$rootPath = realpath(dirname($r->getFileName()) . '/..');
         self::$appPath = self::$rootPath . '/application/';
 
-        require_once self::$appPath . 'Loader.php';
-        require_once self::$appPath . 'Conf.php';
+        require_once self::$appPath . 'loader.php';
+        require_once self::$appPath . 'conf.php';
         self::parseConfig();
     }
 

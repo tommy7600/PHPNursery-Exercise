@@ -57,21 +57,18 @@ class FrontController
             $rc = new ReflectionClass($this->getController());
 
             if ($rc->implementsInterface('IController')) {
-                //var_dump($this->getAction());
                 if ($rc->hasMethod($this->getAction())) {
                     $controller = $rc->newInstance();
-                    //var_dump($controller);
                     $method = $rc->getMethod($this->getAction());
-                    //var_dump($method);
                     $method->invoke($controller);
                 } else {
-                    throw new Exception('Action');
+                    throw new Exception('Something went wrong with action: ' . $this->getAction());
                 }
             } else {
-                throw new Exception("Interface");
+                throw new Exception("Controller doesn't implement Interface");
             }
         } else {
-            throw new Exception("Controller");
+            throw new Exception("'Something went wrong with controller: " . $this->getController());
         }
     }
 

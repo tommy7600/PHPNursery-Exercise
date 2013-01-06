@@ -9,7 +9,7 @@
         </thead>
         <tbody>
 
-        <?php $content = ''; foreach ($this->files As $file): ?>
+        <?php $content = ''; foreach ($files As $file): ?>
             <?php
             $content .= '
 <tr>
@@ -97,10 +97,10 @@
             }
             $content .= '
     <td align="left" class="sizeplus"><b>' . $file . '</b></td>
-    <td align="center" width="150"><a class="btn btn-primary" href="' . $this->download_folder . '/' . $file . '">DOWNLOAD</a>
+    <td align="center" width="150"><a class="btn btn-primary" href="' . $download_folder . '/' . $file . '">DOWNLOAD</a>
     </td>
 </tr>'; ?>
-            <?php endforeach ?>
+        <?php endforeach ?>
         <?php echo $content; ?>
         </tbody>
     </table>

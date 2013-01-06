@@ -4,19 +4,20 @@
             <fieldset>
                 <legend>Send Us a Message</legend>
 
-                <?php if (isset($this->hasError)): ?>
-                <p class="alert alert-error">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    Please check if you\'ve filled all the fields with valid information and try again. Thank you.
-                </p>
+                <?php if (isset($hasError)): ?>
+                    <p class="alert alert-error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        Please check if you\'ve filled all the fields with valid information and try again. Thank you.
+                    </p>
                 <?php endif ?>
-                <?php if (isset($this->emailSent) && $this->emailSent == true): ?>
-                <div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <p><strong>Message Successfully Sent!</strong></p>
+                <?php if (isset($emailSent) && $emailSent == true): ?>
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <p><strong>Message Successfully Sent!</strong></p>
 
-                    <p>Thank you for using our contact form, <strong><?php echo $this->name ?></strong>! Your email was
-                        successfully sent and we will be in touch with you soon.</p></div>
+                        <p>Thank you for using our contact form, <strong><?php echo $this->name ?></strong>! Your email
+                            was
+                            successfully sent and we will be in touch with you soon.</p></div>
                 <?php endif ?>
 
                 <div class="clearfix">
