@@ -1,6 +1,6 @@
 <?php
 
-class download extends Controller implements IController
+class Download extends Controller implements IController
 {
     const VIEWS_FOLDER = '../views/download/';
 

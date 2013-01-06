@@ -1,6 +1,6 @@
 <?php
 
-class gallery extends Controller implements IController
+class Gallery extends Controller implements IController
 {
     const VIEWS_FOLDER = '../views/gallery/';
 

@@ -1,6 +1,6 @@
 <?php
 
-class about extends Controller implements IController
+class About extends Controller implements IController
 {
     const VIEWS_FOLDER = '../views/about/';
 

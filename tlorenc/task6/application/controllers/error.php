@@ -1,6 +1,6 @@
 <?php
 
-class error extends Controller implements IController
+class Error extends Controller implements IController
 {
     const VIEWS_FOLDER = '../views/error/';
 

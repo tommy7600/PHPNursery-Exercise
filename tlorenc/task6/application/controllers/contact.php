@@ -1,6 +1,6 @@
 <?php
 
-class contact extends Controller implements IController
+class Contact extends Controller implements IController
 {
     const VIEWS_FOLDER = '../views/contact/';
 
