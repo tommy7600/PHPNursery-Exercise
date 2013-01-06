@@ -24,9 +24,7 @@ class index extends Controller implements IController
 
         if ($dir = opendir($slider_folder)) {
             while ($file = readdir($dir)) {
-
                 $ex = pathinfo($file);
-
                 if ($ex['extension'] == 'jpg') {
                     array_push($files, $file);
                 }
