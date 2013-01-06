@@ -12,19 +12,18 @@ class Gallery extends Controller implements IController
         $conf = Conf::getInstance();
 
         $content->gallery_folder = trim($conf->gallery['gallery_folder']);
-        $content->images = $this->getImages();
+        $content->images = $this->getImages($content->gallery_folder);
 
         $result = $this->after($content->render(self::VIEWS_FOLDER . 'index.php'));
 
         $fc->setBody($result);
     }
 
-    private function getImages()
+    private function getImages($images_folder)
     {
         $images = array();
         $image = new ImgResizer();
         $conf = Conf::getInstance();
-        $images_folder = trim($conf->gallery['gallery_folder']);
         $thumb_w = trim($conf->gallery['thumbs_w']);
         $thumb_h = trim($conf->gallery['thumbs_h']);
 

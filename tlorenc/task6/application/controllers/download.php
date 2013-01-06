@@ -11,17 +11,17 @@ class Download extends Controller implements IController
         $fc = FrontController::getInstance();
 
         $content->download_folder = trim(Conf::getInstance()->download['download_folder']);
-        $content->files = $this->getFiles();
+        $content->files = $this->getFiles($content->download_folder);
 
         $result = $this->after($content->render(self::VIEWS_FOLDER . 'index.php'));
 
         $fc->setBody($result);
     }
 
-    private function getFiles()
+    private function getFiles($files_folder)
     {
         $files = array();
-        $files_folder = trim(Conf::getInstance()->download['download_folder']);
+
         if ($dir = opendir($files_folder)) {
             while ($file = readdir($dir)) {
                 $ex = pathinfo($file);

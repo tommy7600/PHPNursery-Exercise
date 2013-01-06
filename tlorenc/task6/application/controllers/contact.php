@@ -7,6 +7,7 @@ class Contact extends Controller implements IController
     public function index()
     {
         $content = new View();
+
         $fc = FrontController::getInstance();
 
         if (isset($_POST['submit'])) {
@@ -57,6 +58,7 @@ class Contact extends Controller implements IController
                 $mailer = new Mailer();
                 $mailer->sendMail($subject, $content->name, $email, $phone, $comments);
                 $content->emailSent = true;
+                unset($mailer);
             }
         }
 

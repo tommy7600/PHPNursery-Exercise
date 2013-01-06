@@ -15,7 +15,7 @@
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <p><strong>Message Successfully Sent!</strong></p>
 
-                        <p>Thank you for using our contact form, <strong><?php echo $this->name ?></strong>! Your email
+                        <p>Thank you for using our contact form, <strong><?php echo $name ?></strong>! Your email
                             was
                             successfully sent and we will be in touch with you soon.</p></div>
                 <?php endif ?>

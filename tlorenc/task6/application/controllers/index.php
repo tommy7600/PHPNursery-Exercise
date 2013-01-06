@@ -10,8 +10,8 @@ class Index extends Controller implements IController
         $conf = Conf::getInstance();
         $fc = FrontController::getInstance();
 
-        $content->files = $this->getSliders(trim($conf->slider['slider_folder']));
         $content->dir = trim($conf->slider['slider_folder']);
+        $content->files = $this->getSliders($content->dir);
 
         $result = $this->after($content->render(self::VIEWS_FOLDER . 'index.php'));
 
@@ -32,10 +32,8 @@ class Index extends Controller implements IController
         }
         return $files;
     }
-
 }
-//		$params = $fc->getParams();
-//
-//		foreach ($params as $name=>$value) {
-//			$view->$name = $value;
-//	}
+//$params = $fc->getParams();
+//foreach ($params as $name=>$value) {
+//  $view->$name = $value;
+//}

@@ -19,7 +19,7 @@ class Loader
         }
     }
 
-    public static function exceptionHandler($exception)
+    public static function exceptionHandler(Exception $exception)
     {
         $conf = Conf::getInstance();
         if ((bool)trim($conf->debbug['show_exceptions']))
@@ -27,7 +27,6 @@ class Loader
         else
             header("Location: " . $conf->main['web_folder'] . "error");
     }
-
 }
 
 spl_autoload_register('Loader::loadModels');

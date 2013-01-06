@@ -15,7 +15,6 @@ class HTML
         $base_url = $protocol . '://' . $domain . trim(Conf::getInstance()->main['web_folder']);
 
         return $base_url;
-
     }
 
     static private function is_https()

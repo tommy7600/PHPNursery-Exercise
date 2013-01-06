@@ -6,7 +6,6 @@ class View
 
     public function __set($prop, $value)
     {
-        //$this->$prop = $value;
         $this->data[$prop] = $value;
     }
 

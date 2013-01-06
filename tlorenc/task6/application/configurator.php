@@ -27,7 +27,6 @@ class Configurator
                 $conf->$key = $value;
             }
         }
-
     }
 
     public static function getRootPath()
@@ -39,5 +38,4 @@ class Configurator
     {
         return self::$appPath;
     }
-
 }
