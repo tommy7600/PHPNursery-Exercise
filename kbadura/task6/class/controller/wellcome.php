@@ -1,0 +1,1 @@
+<?phpclass Controller_Wellcome extends Controller{	public function action_index() {				$this->view->content->imie = 'adrian';	}	}

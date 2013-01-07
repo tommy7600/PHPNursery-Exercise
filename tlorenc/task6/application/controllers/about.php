@@ -1,15 +1,16 @@
 <?php
 
-class about implements IController
+class About extends Controller implements IController
 {
     const VIEWS_FOLDER = '../views/about/';
 
     public function index()
     {
-        $view = new View();
+        $content = new View();
+
         $fc = FrontController::getInstance();
 
-        $result = $view->render(self::VIEWS_FOLDER . 'index.php');
+        $result = $this->after($content->render(self::VIEWS_FOLDER . 'index.php'));
 
         $fc->setBody($result);
     }

@@ -3,7 +3,6 @@
  * Tables for, you guessed it, tabular data
  * ---------------------------------------- */
 
-
 // BASELINE STYLES
 // ---------------
 
@@ -28,13 +27,12 @@ table {
     vertical-align: top;
     border-top: 1px solid #ddd;
   }
-  // When scoped to row, fix th in tbody
+// When scoped to row, fix th in tbody
   tbody th {
     border-top: 1px solid #ddd;
     vertical-align: top;
   }
 }
-
 
 // CONDENSED VERSION
 // -----------------
@@ -44,7 +42,6 @@ table {
     padding: 5px 5px 4px;
   }
 }
-
 
 // BORDERED VERSION
 // ----------------
@@ -75,7 +72,6 @@ table {
   }
 }
 
-
 // TABLE CELL SIZES
 // ----------------
 
@@ -83,26 +79,41 @@ table {
 .tableColumns(@columnSpan: 1) {
   width: ((@gridColumnWidth - 20) * @columnSpan) + ((@gridColumnWidth - 20) * (@columnSpan - 1));
 }
-table {
-  // Default columns
-  .span1     { .tableColumns(1); }
-  .span2     { .tableColumns(2); }
-  .span3     { .tableColumns(3); }
-  .span4     { .tableColumns(4); }
-  .span5     { .tableColumns(5); }
-  .span6     { .tableColumns(6); }
-  .span7     { .tableColumns(7); }
-  .span8     { .tableColumns(8); }
-  .span9     { .tableColumns(9); }
-  .span10    { .tableColumns(10); }
-  .span11    { .tableColumns(11); }
-  .span12    { .tableColumns(12); }
-  .span13    { .tableColumns(13); }
-  .span14    { .tableColumns(14); }
-  .span15    { .tableColumns(15); }
-  .span16    { .tableColumns(16); }
-}
 
+table { // Default columns
+  .span1 { .tableColumns(1);
+  }
+  .span2 { .tableColumns(2);
+  }
+  .span3 { .tableColumns(3);
+  }
+  .span4 { .tableColumns(4);
+  }
+  .span5 { .tableColumns(5);
+  }
+  .span6 { .tableColumns(6);
+  }
+  .span7 { .tableColumns(7);
+  }
+  .span8 { .tableColumns(8);
+  }
+  .span9 { .tableColumns(9);
+  }
+  .span10 { .tableColumns(10);
+  }
+  .span11 { .tableColumns(11);
+  }
+  .span12 { .tableColumns(12);
+  }
+  .span13 { .tableColumns(13);
+  }
+  .span14 { .tableColumns(14);
+  }
+  .span15 { .tableColumns(15);
+  }
+  .span16 { .tableColumns(16);
+  }
+}
 
 // ZEBRA-STRIPING
 // --------------
@@ -121,8 +132,7 @@ table {
   }
 }
 
-table {
-  // Tablesorting styles w/ jQuery plugin
+table { // Tablesorting styles w/ jQuery plugin
   .header {
     cursor: pointer;
     &:after {
@@ -135,39 +145,39 @@ table {
       visibility: hidden;
     }
   }
-  // Style the sorted column headers (THs)
+// Style the sorted column headers (THs)
   .headerSortUp,
   .headerSortDown {
-    background-color: rgba(141,192,219,.25);
-    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    background-color: rgba(141, 192, 219, .25);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
   }
-  // Style the ascending (reverse alphabetical) column header
+// Style the ascending (reverse alphabetical) column header
   .header:hover {
     &:after {
-      visibility:visible;
+      visibility: visible;
     }
   }
-  // Style the descending (alphabetical) column header
+// Style the descending (alphabetical) column header
   .headerSortDown,
   .headerSortDown:hover {
     &:after {
-      visibility:visible;
+      visibility: visible;
       .opacity(60);
     }
   }
-  // Style the ascending (reverse alphabetical) column header
+// Style the ascending (reverse alphabetical) column header
   .headerSortUp {
     &:after {
       border-bottom: none;
       border-left: 4px solid transparent;
       border-right: 4px solid transparent;
       border-top: 4px solid #000;
-      visibility:visible;
+      visibility: visible;
       .box-shadow(none); //can't add boxshadow to downward facing arrow :(
       .opacity(60);
     }
   }
-  // Blue Table Headings
+// Blue Table Headings
   .blue {
     color: @blue;
     border-bottom-color: @blue;
@@ -176,7 +186,7 @@ table {
   .headerSortDown.blue {
     background-color: lighten(@blue, 40%);
   }
-  // Green Table Headings
+// Green Table Headings
   .green {
     color: @green;
     border-bottom-color: @green;
@@ -185,7 +195,7 @@ table {
   .headerSortDown.green {
     background-color: lighten(@green, 40%);
   }
-  // Red Table Headings
+// Red Table Headings
   .red {
     color: @red;
     border-bottom-color: @red;
@@ -194,7 +204,7 @@ table {
   .headerSortDown.red {
     background-color: lighten(@red, 50%);
   }
-  // Yellow Table Headings
+// Yellow Table Headings
   .yellow {
     color: @yellow;
     border-bottom-color: @yellow;
@@ -203,7 +213,7 @@ table {
   .headerSortDown.yellow {
     background-color: lighten(@yellow, 40%);
   }
-  // Orange Table Headings
+// Orange Table Headings
   .orange {
     color: @orange;
     border-bottom-color: @orange;
@@ -212,7 +222,7 @@ table {
   .headerSortDown.orange {
     background-color: lighten(@orange, 40%);
   }
-  // Purple Table Headings
+// Purple Table Headings
   .purple {
     color: @purple;
     border-bottom-color: @purple;

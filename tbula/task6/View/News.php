@@ -1,5 +1,5 @@
-<div id="myCarousel" class="carousel slide">
-    <div class="carousel-inner offset2">
+<div id="myCarousel" class="carousel slide span11">
+    <div class="carousel-inner offset2 span6">
         <?php
             $i=0;
             foreach ($bannerImage as $img)
